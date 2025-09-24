@@ -1,0 +1,32 @@
+.section-navbar {
+    margin-bottom: 26px;
+}
+
+.customNavbar {
+    --fs-navbar-bkg-color: rgba(1, 4, 73, 1);
+    --fs-navbar-logo-width: 174px;
+}
+
+.customNavbarButtons a span {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.16px;
+    text-transform: uppercase;
+    max-width: 95px;
+    color: #fff;
+}
+
+.customNavbarButtons svg {
+    color: #fff;
+}
+
+.customNavbarButtons a svg {
+    width: 30px;
+    height: 30px;
+}
+
+.customNavbarButtons a div,
+.customNavbarButtons button>div {
+    background: transparent !important;
+}

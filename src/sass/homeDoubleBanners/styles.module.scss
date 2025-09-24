@@ -1,0 +1,10 @@
+.homeDoubleBanners {
+    display: flex;
+    gap: 16px;
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto 48px;
+}
+
+.homeDoubleBanners img {
+    width: 100%;
+}

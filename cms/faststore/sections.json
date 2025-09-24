@@ -1,0 +1,149 @@
+[
+  {
+    "name": "CustomHero",
+    "schema": {
+      "title": "Banner principal",
+      "type": "object",
+      "properties": {
+        "link": {
+          "title": "Link",
+          "type": "string"
+        },
+        "image": {
+          "title": "Banner principal",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "CustomIncentives",
+    "schema": {
+      "title": "Benefícios",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Texto",
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "HomeDepartments",
+    "schema": {
+      "title": "Departamentos mais vistos",
+      "type": "object",
+      "properties": {
+        "departments": {
+          "title": "Departamentos",
+          "type": "array",
+          "items": {
+            "title": "Departamento",
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "Nome",
+                "type": "string"
+              },
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "HomeMiddleBanner",
+    "schema": {
+      "title": "Banner Meio",
+      "type": "object",
+      "properties": {
+        "link": {
+          "title": "Link",
+          "type": "string"
+        },
+        "image": {
+          "title": "Banner Meio",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "HomeDoubleBanners",
+    "schema": {
+      "title": "Banners Duplos",
+      "type": "object",
+      "properties": {
+        "banners": {
+          "title": "Banners",
+          "type": "array",
+          "items": {
+            "title": "Banner",
+            "type": "object",
+            "properties": {
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "HomeBrands",
+    "schema": {
+      "title": "Marcas",
+      "type": "object",
+      "properties": {
+        "brands": {
+          "title": "Marcas",
+          "type": "array",
+          "items": {
+            "title": "Marca",
+            "type": "object",
+            "properties": {
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

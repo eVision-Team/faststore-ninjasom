@@ -1,0 +1,20 @@
+.customIncentives {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 46px;
+    padding: 29px 0;
+    background-color: #F1F2F3;
+}
+
+.customIncentivesItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.customIncentivesItem p {
+    font-weight: 500;
+    font-size: 16px;
+    color: #313131;
+}
