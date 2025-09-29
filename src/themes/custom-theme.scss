@@ -442,7 +442,7 @@
   // CUSTOM STYLES
 
   .section-navbar {
-    margin-bottom: 26px;
+    margin-bottom: 50px;
   }
 
   .section-title,
@@ -505,5 +505,16 @@
 
   .section_section__TjtMz section[data-fs-carousel] li[data-fs-carousel-item]:not(:last-of-type) {
     margin-right: 24px;
+  }
+
+  .section-product-shelf:nth-of-type(3),
+  .section-product-shelf:nth-of-type(4),
+  .section-product-shelf:nth-of-type(5),
+  .section-product-shelf:nth-of-type(6) {
+    display: none;
+  }
+
+  form[data-testid="fs-newsletter-form"] {
+    padding: 64px 80px;
   }
 }

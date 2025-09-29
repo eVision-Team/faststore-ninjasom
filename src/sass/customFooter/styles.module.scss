@@ -1,0 +1,171 @@
+.customFooter {
+    background-color: #010349;
+    border-top: 6px solid #0B55E2;
+    padding: 36px 0;
+
+    .customFooterWrapper {
+        display: flex;
+        justify-content: space-between;
+        max-width: var(--fs-grid-max-width);
+        margin: 0 auto;
+
+        .copyright {
+            font-weight: 400;
+            font-size: 10px;
+            color: #ffffff;
+            margin-bottom: 24px;
+            max-width: 299px;
+            font-family: 'Montserrat';
+        }
+
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        .logo {
+            margin-bottom: 24px;
+            display: flex;
+        }
+
+        h4 {
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-bottom: 30px;
+        }
+
+        li a {
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 24px;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .paymentsWrapper {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 192px;
+            gap: 8px;
+        }
+
+        .sectionContainer {
+            margin-bottom: 43px;
+        }
+
+        .formNewsletter {
+            max-width: 367px;
+        }
+
+        .formNewsletter h2 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 100%;
+            color: #fff;
+        }
+
+        .containerTitleNewsletter p {
+            font-family: 'Montserrat';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 100%;
+            color: #fff;
+            margin: 10px 0 16px;
+        }
+
+        .formNewsletter input {
+            border: 1px solid #9099A2;
+            font-family: 'Inter';
+            font-weight: 400;
+            font-size: 15.38px;
+            line-height: 16px;
+            letter-spacing: 0.16px;
+            color: #171A1C;
+            width: 100%;
+            border-radius: 2px;
+            padding: 0 12px;
+            min-height: 48px;
+        }
+
+        .formNewsletter input::placeholder {
+            font-family: 'Inter';
+            font-weight: 400;
+            font-size: 15.38px;
+            line-height: 16px;
+            letter-spacing: 0.16px;
+            color: #5D666F;
+        }
+
+        .formNewsletter .inputName {
+            margin-bottom: 16px;
+        }
+
+        .formNewsletter .wrapperInput {
+            margin-bottom: 17px;
+        }
+
+        .formNewsletter .privacyText,
+        .formNewsletter .privacyText a {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18.4px;
+            letter-spacing: 0.16px;
+            color: #fff;
+        }
+
+        .formNewsletter .submitContainer {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .formNewsletter .submitContainer button {
+            width: 168px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FFFFFF;
+            background-color: transparent;
+            font-family: 'Inter';
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 16px;
+            color: #fff;
+            margin-top: 33px;
+            cursor: pointer;
+        }
+    }
+
+    .dev {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 36px;
+
+        p {
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 100%;
+            color: #E3E6E8;
+        }
+    }
+}

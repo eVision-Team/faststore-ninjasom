@@ -1,0 +1,35 @@
+.homeTabLayout {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto;
+    display: flex;
+    gap: 66px;
+    align-items: center;
+}
+
+.sectionTitle {
+    margin: 0 !important;
+}
+
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.tab {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    color: #0B55E2;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #0B55E2;
+    cursor: pointer;
+}
+
+.tab.selected {
+    background-color: #0B55E2;
+    color: #fff;
+}

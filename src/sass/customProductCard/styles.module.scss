@@ -1,0 +1,102 @@
+.card {
+    display: block;
+    background: #fff;
+    border: 2px solid #E3E6E8;
+    transition: 0.2s all ease-in-out;
+    text-decoration: none;
+    max-width: 230px;
+    padding: 9px;
+}
+
+.card:hover {
+    border-color: #0B55E2;
+}
+
+.imageWrapper {
+    position: relative;
+    min-height: 202px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.discountBadge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00B230;
+    color: #fff;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.16px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 100px;
+}
+
+.title {
+    text-wrap: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: 6px 0;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.16px;
+    color: #171A1C;
+    min-height: 60px;
+    line-height: 20px;
+}
+
+.prices {
+    display: flex;
+    flex-direction: column;
+}
+
+.listPrice {
+    text-decoration: line-through;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 23.8px;
+    letter-spacing: 0.16px;
+    color: #5D666F;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27.2px;
+    letter-spacing: 0.16px;
+    color: #010349;
+}
+
+.installments {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.16px;
+    color: #5D666F;
+}
+
+.installments strong {
+    font-weight: 600;
+}
+
+.pixMessage {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.16px;
+    color: #5D666F;
+}

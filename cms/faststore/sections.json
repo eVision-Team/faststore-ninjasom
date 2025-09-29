@@ -145,5 +145,103 @@
         }
       }
     }
+  },
+  {
+    "name": "HomeTabLayout",
+    "schema": {
+      "title": "O melhor do segmento",
+      "type": "object",
+      "properties": {
+        "segments": {
+          "title": "Segmentos",
+          "type": "array",
+          "items": {
+            "title": "Segmento",
+            "type": "object",
+            "properties": {
+              "segment": {
+                "title": "Segmento",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "HomeMusicTaste",
+    "schema": {
+      "title": "Escolha pelo gosto musical",
+      "type": "object",
+      "properties": {
+        "genres": {
+          "title": "Gêneros",
+          "type": "array",
+          "items": {
+            "title": "Gêneros",
+            "type": "object",
+            "properties": {
+              "title": {
+                "title": "Nome",
+                "type": "string"
+              },
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "CustomFooter",
+    "schema": {
+      "title": "Footer",
+      "type": "object",
+      "properties": {
+        "menuSections": {
+          "title": "Seções do Menu",
+          "type": "array",
+          "items": {
+            "title": "Seção",
+            "type": "object",
+            "properties": {
+              "title": {
+                "title": "Título da Seção",
+                "type": "string"
+              },
+              "items": {
+                "title": "Links",
+                "type": "array",
+                "items": {
+                  "title": "Link",
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "title": "Nome do Link",
+                      "type": "string"
+                    },
+                    "link": {
+                      "title": "URL do Link",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 ]

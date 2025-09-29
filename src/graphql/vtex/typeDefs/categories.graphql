@@ -1,0 +1,24 @@
+# Tipo que representa cada categoria
+type Category {
+  id: Int!
+  name: String!
+  hasChildren: Boolean!
+  url: String!
+  children: [CategoryChild!] # array de children
+  title: String
+  metaTagDescription: String
+}
+
+# Tipo que representa os children de uma categoria
+type CategoryChild {
+  id: Int!
+  name: String!
+  hasChildren: Boolean!
+  url: String!
+  children: [Int!] # apenas os IDs dos subcategorias
+}
+
+# Query principal
+type Query {
+  getCategories: [Category!]!
+}
