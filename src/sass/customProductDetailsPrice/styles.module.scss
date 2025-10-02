@@ -1,0 +1,46 @@
+.customProductDetailsPrice {
+    min-width: 260px;
+
+    .prices {
+        display: flex;
+        flex-direction: column;
+
+        .listPrice {
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26.88px;
+            letter-spacing: 0.16px;
+            text-decoration: line-through;
+            color: #171A1C;
+        }
+
+        .value {
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26.88px;
+            letter-spacing: 0.16px;
+            color: #171A1C;
+
+            strong {
+                font-size: 24px;
+                font-weight: 700;
+                color: #0B55E2;
+            }
+        }
+    }
+
+    .installments {
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26.88px;
+        letter-spacing: 0.16px;
+        color: #171A1C;
+
+        strong {
+            font-weight: 600;
+        }
+    }
+}

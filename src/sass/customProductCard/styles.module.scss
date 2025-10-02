@@ -8,6 +8,12 @@
     padding: 9px;
 }
 
+.info {
+    min-height: 155px;
+    display: flex;
+    flex-direction: column;
+}
+
 .card:hover {
     border-color: #0B55E2;
 }
@@ -62,6 +68,7 @@
 .prices {
     display: flex;
     flex-direction: column;
+    margin-top: auto;
 }
 
 .listPrice {
@@ -87,6 +94,7 @@
     line-height: 16px;
     letter-spacing: 0.16px;
     color: #5D666F;
+    margin-top: auto;
 }
 
 .installments strong {

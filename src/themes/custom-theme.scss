@@ -517,4 +517,31 @@
   form[data-testid="fs-newsletter-form"] {
     padding: 64px 80px;
   }
+
+  div[data-fs-product-listing-results="true"]:not(:last-child)>div {
+    margin-top: 2.5rem;
+  }
+
+  .section-product-details {
+    background-color: #FAFAFB;
+  }
+
+  .section-product-details [data-fs-product-details] [data-fs-product-details-values] {
+    align-items: center;
+  }
+
+  .section-product-details [data-fs-buy-button] [data-fs-button-wrapper] {
+    background-color: #00B230;
+    border-color: #00B230;
+  }
+
+  .section-product-details [data-fs-product-details] [data-fs-product-details-settings] {
+    gap: 6px;
+  }
+
+  @media(min-width: 1024px) {
+    .section-product-gallery [data-fs-product-listing] [data-fs-product-listing-filters] {
+      top: 140px;
+    }
+  }
 }
