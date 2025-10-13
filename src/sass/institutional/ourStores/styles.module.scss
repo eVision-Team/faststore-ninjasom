@@ -1,0 +1,66 @@
+.ourStores {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto 48px;
+
+    .banner {
+        margin-bottom: 30px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .stores {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        row-gap: 60px;
+
+        .store {
+            text-decoration: none;
+            color: #000;
+
+            .storeImage {
+                max-height: 320px;
+            }
+
+            .storeInfo {
+                padding: 20px;
+                background-color: #fff;
+
+                h2 {
+                    font-size: 20px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    margin-bottom: 20px;
+                }
+
+                .address {
+                    line-height: 1.5;
+                    font-weight: 400;
+                    margin-bottom: 24px;
+                    font-size: 16px;
+                }
+
+                .phonesWrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    min-height: 86.52px;
+
+                    p {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+
+                        img {
+                            max-width: 25px;
+                            max-height: fit-content;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.paymentMethods, .privacyPolicy, .exchangesAndReturns, .deadlineAndDelivery {
+    max-width: var(--fs-grid-max-width);
+    margin: 100px auto 48px;
+
+    h2,
+    h3 {
+        font-size: 2.25rem;
+        text-transform: uppercase;
+        color: #3f3f40;
+        margin: 30px 0;
+        font-weight: 700;
+    }
+
+    h2 {
+        margin-bottom: 60px;
+    }
+
+    h3 {
+        margin: 28px 0;
+        font-size: 1.75rem;
+    }
+
+    p {
+        line-height: 1.5;
+        font-size: 16px;
+        font-weight: 400;
+        color: #3f3f40;
+        margin: 16px 0;
+    }
+}

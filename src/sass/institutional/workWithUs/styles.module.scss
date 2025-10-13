@@ -1,0 +1,88 @@
+.workWithUs {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto 48px;
+
+    .banner {
+        margin-bottom: 45px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .secondSection {
+        display: flex;
+        align-items: center;
+        max-width: 1044px;
+        margin: 0 auto;
+        background-color: #fff;
+
+        .infoContainer {
+            padding: 40px 61px;
+
+            h2 {
+                font-size: 2.25rem;
+                color: #3f3f40;
+                line-height: 41.4px;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 1.5;
+                color: #3f3f40;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .thirdSection {
+        max-width: 956px;
+        margin: 40px auto 0;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        padding: 40px;
+        background-color: #fff;
+        position: relative;
+
+        .info {
+            position: relative;
+            z-index: 1;
+
+            span {
+                font-size: 24px;
+                color: #000;
+                font-weight: 400;
+            }
+
+            h2 {
+                color: #010449;
+                font-size: 60px;
+                font-weight: 700;
+                margin-top: 0;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+
+            p {
+                line-height: 1.5;
+                color: #3f3f40;
+                font-weight: 400;
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+        }
+
+        svg {
+            position: absolute;
+            z-index: 0;
+            top: 40px;
+        }
+
+        .right {
+            margin-bottom: -30px;
+        }
+    }
+}

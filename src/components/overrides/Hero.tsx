@@ -1,6 +1,6 @@
 import { SectionOverride } from "@faststore/core";
 import styles from "../../sass/hero/styles.module.scss";
-import CustomHero from "../organisms/CustomHero/";
+import CustomHero from "../organisms/Home/CustomHero";
 
 const override: SectionOverride = {
   section: "Hero",

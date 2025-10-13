@@ -1,0 +1,19 @@
+.faq {
+    max-width: var(--fs-grid-max-width);
+    margin: 100px auto 48px;
+
+    h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #3f3f40;
+        margin-bottom: 30px;
+    }
+
+    p {
+        line-height: 1.5;
+        font-size: 16px;
+        font-weight: 400;
+        color: #3f3f40;
+        margin-bottom: 16px;
+    }
+}

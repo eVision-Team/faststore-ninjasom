@@ -1,0 +1,33 @@
+.customProductDetailsTitle {
+    h1 {
+        font-family: 'Montserrat';
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 0.16px;
+        color: #171A1C;
+        margin-bottom: 6px;
+        line-height: 28px;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        row-gap: 10px;
+
+        p {
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 100%;
+            letter-spacing: 0.16px;
+            color: #757575;
+
+            span {
+                color: #000000;
+            }
+        }
+    }
+}

@@ -15,8 +15,10 @@
   --fs-color-warning-bkg: #e9fce3;
   --fs-color-danger-bkg: #f7d1d1;
 
-  --fs-color-primary-bkg-light: var(--fs-color-neutral-0);
+  --fs-color-primary-bkg-light: #f3f3f3;
   --fs-color-neutral-7: #002155;
+
+  background-color: #f3f3f3;
 
   // --------------------------------------------------------
   // Typography (Branding Core)
@@ -537,6 +539,42 @@
 
   .section-product-details [data-fs-product-details] [data-fs-product-details-settings] {
     gap: 6px;
+  }
+
+  section[data-fs-product-details-settings="true"][data-fs-product-details-section="true"] {
+    border: none;
+    padding: 0;
+  }
+
+  .faq button[data-testid="fs-accordion-button"] {
+    min-height: 50px;
+    padding: 0;
+  }
+
+  .faq button[data-testid="fs-accordion-button"]>div {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+
+  .faq div[data-testid="fs-accordion-panel"]>div {
+    padding: 6px 0 0 4px;
+  }
+
+  .faq button[data-testid="fs-accordion-button"] {
+    min-height: 50px;
+    padding: 0;
+  }
+
+  .faq div[data-fs-button-wrapper="true"] span[data-fs-button-icon="true"] {
+    display: flex;
+  }
+
+  .faq div[data-fs-button-wrapper="true"] span:first-child {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
   }
 
   @media(min-width: 1024px) {

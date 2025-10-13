@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@faststore/cli": "3.77.2",
+    "draft-js": "^0.11.7",
+    "draft-js-export-html": "^1.4.1",
     "next": "^13.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

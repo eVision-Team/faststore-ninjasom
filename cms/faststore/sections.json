@@ -243,5 +243,274 @@
         }
       }
     }
+  },
+  {
+    "name": "AboutUs",
+    "schema": {
+      "title": "Quem somos",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Título acima do texto",
+          "type": "string"
+        },
+        "image": {
+          "title": "Imagem à esquerda",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
+        },
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "OurStores",
+    "schema": {
+      "title": "Nossas Lojas",
+      "type": "object",
+      "properties": {
+        "stores": {
+          "title": "Lojas",
+          "type": "array",
+          "items": {
+            "title": "Loja",
+            "type": "object",
+            "properties": {
+              "title": {
+                "title": "Nome",
+                "type": "string"
+              },
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "address": {
+                "title": "Endereços",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "draftjs-rich-text"
+                }
+              },
+              "residentialPhone": {
+                "title": "Telefone Residencial",
+                "type": "string"
+              },
+              "whatsappPhone": {
+                "title": "Whatsapp",
+                "type": "string"
+              },
+              "whatsappLink": {
+                "title": "Link do Whatsapp",
+                "type": "string"
+              },
+              "commercialPhone": {
+                "title": "Telefone Comercial",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "EachStore",
+    "schema": {
+      "title": "Loja",
+      "type": "object",
+      "properties": {
+        "image": {
+          "title": "Banner Principal",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
+        },
+        "mapsLink": {
+          "title": "Link do Google Maps",
+          "type": "string"
+        },
+        "middleText": {
+          "title": "Sobre nós e horários",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        },
+        "address": {
+          "title": "Endereço",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        },
+        "residentialPhone": {
+          "title": "Telefone Residencial",
+          "type": "string"
+        },
+        "whatsappPhone": {
+          "title": "Whatsapp",
+          "type": "string"
+        },
+        "whatsappLink": {
+          "title": "Link do Whatsapp",
+          "type": "string"
+        },
+        "commercialPhone": {
+          "title": "Telefone Comercial",
+          "type": "string"
+        },
+        "email": {
+          "title": "E-mail",
+          "type": "string"
+        },
+        "storeImages": {
+          "title": "Imagens da Loja",
+          "type": "array",
+          "items": {
+            "title": "Imagem",
+            "type": "object",
+            "properties": {
+              "storeImage": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "WorkWithUs",
+    "schema": {
+      "title": "Trabalhe conosco",
+      "type": "object",
+      "properties": {
+        "image": {
+          "title": "Banner Principal",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
+        },
+        "iframeLink": {
+          "title": "Link do iFrame",
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "FAQ",
+    "schema": {
+      "title": "Dúvidas Frequentes",
+      "type": "object",
+      "properties": {
+        "faq": {
+          "title": "Dúvidas/Respostas",
+          "type": "array",
+          "items": {
+            "title": "Dúvidas/Respostas",
+            "type": "object",
+            "properties": {
+              "question": {
+                "title": "Pergunta",
+                "type": "string"
+              },
+              "answer": {
+                "title": "Resposta",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "draftjs-rich-text"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "PaymentMethods",
+    "schema": {
+      "title": "Formas de Pagamento",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "PrivacyPolicy",
+    "schema": {
+      "title": "Política de Privacidade",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "ExchangesAndReturns",
+    "schema": {
+      "title": "Trocas e Devoluções",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "DeadlineAndDelivery",
+    "schema": {
+      "title": "Prazo e Entrega",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
   }
 ]

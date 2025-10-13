@@ -1,0 +1,80 @@
+.eachStore {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto 48px;
+
+    .banner {
+        margin-bottom: 45px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .storeInfo {
+        display: flex;
+        padding: 20px;
+        background-color: #fff;
+        justify-content: space-between;
+        gap: 30px;
+
+        p,
+        h2 {
+            color: #000;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 24px;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .middleInfo {
+
+            p {
+                line-height: 1.5;
+                font-weight: 400;
+                margin: 16px 0;
+            }
+        }
+
+        .rightInfo {
+            min-width: 260px;
+
+            .address p {
+                line-height: 24px;
+
+                &:last-of-type {
+                    margin-top: 20px;
+                }
+            }
+
+            .contact {
+                margin-top: 40px;
+            }
+
+            .contactWrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                margin-top: 10px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .storeImages {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+}

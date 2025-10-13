@@ -1,0 +1,55 @@
+.aboutUs {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto;
+
+    .banner {
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        h2,
+        h1 {
+            font-size: 36px;
+            text-transform: uppercase;
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 48px;
+            top: 54%;
+        }
+
+        h2 {
+            top: 30%;
+        }
+    }
+
+    .content {
+        display: flex;
+        padding-top: 60px;
+        margin-bottom: 40px;
+        gap: 90px;
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 30px 0;
+            color: #3f3f40;
+            text-transform: uppercase;
+        }
+
+        p {
+            line-height: 24px;
+            font-size: 16px;
+            color: #3f3f40;
+            font-weight: 400;
+        }
+    }
+}

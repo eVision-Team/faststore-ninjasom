@@ -1,6 +1,6 @@
 import { SectionOverride } from "@faststore/core";
 import styles from "../../sass/productShelf/styles.module.scss";
-import CustomProductCard from "../organisms/CustomProductCard";
+import CustomProductCard from "../organisms/Global/CustomProductCard";
 
 const override: SectionOverride = {
   section: "ProductShelf",
