@@ -11,7 +11,7 @@
     "test": "faststore test"
   },
   "dependencies": {
-    "@faststore/cli": "3.77.2",
+    "@faststore/cli": "3.90.0",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
     "next": "^13.5.9",
