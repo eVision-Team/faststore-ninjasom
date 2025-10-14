@@ -58,7 +58,7 @@ const CustomFooter = ({ menuSections }: Props) => {
           {/* <Image src={Top100} alt="Top 100 Dealer Finalist" /> */}
         </div>
         <div className={styles.secondCol}>
-          {menuSections.map((section, index) => (
+          {menuSections.map((section, index) => ( 
             <div key={index}>
               <h4>{section.title}</h4>
               <ul>
