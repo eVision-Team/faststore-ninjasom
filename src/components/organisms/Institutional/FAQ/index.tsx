@@ -14,7 +14,6 @@ type Props = {
 };
 
 const FAQ = ({ faq }: { faq: Props[] }) => {
-  console.log(faq);
   const [indices, setIndices] = useState<Set<number>>(new Set());
 
   const onChange = (index: number) => {

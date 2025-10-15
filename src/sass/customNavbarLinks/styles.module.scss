@@ -89,10 +89,43 @@
 
 .submenu .navbarImageItem:last-child img {
     max-width: 432px;
-}   
+}
 
-.menuLabelWrapper{
+.menuLabelWrapper {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+
+// MOBILE
+
+@media (max-width: 1023px) {
+    .mobileMenu {
+        .mobileNoSubmenuLink {
+            padding-left: 16px;
+            font-weight: 600;
+        }
+
+        .mobileSubmenu {
+            padding-left: 30px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+
+            li {
+                list-style-type: none;
+            }
+
+            .mobileSubmenuLinks {
+                padding-left: 36px;
+                padding-top: 10px;
+                padding-bottom: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+    }
 }

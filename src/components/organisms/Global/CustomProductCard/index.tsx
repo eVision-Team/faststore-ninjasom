@@ -61,7 +61,7 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
           )}
           <span className={styles.price}>{formatPrice(price)}</span>
           {discount > 0 && (
-            <div className={styles.pixMessage}>À vista no PIX</div>
+            <div className={styles.pixMessage}>À vista</div>
           )}
         </div>
 

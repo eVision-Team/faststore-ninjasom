@@ -4,6 +4,8 @@ import CardIcon from "./icons/CardIcon";
 import TruckIcon from "./icons/TruckIcon";
 import MascotIcon from "./icons/MascotIcon";
 import styles from "../../../../sass/incentives/styles.module.scss";
+import useIsMobile from "../../../hooks/useIsMobile";
+import { Carousel } from "@faststore/ui";
 
 type Props = {
   title: string;
@@ -29,14 +31,29 @@ const items = [
 ];
 
 const CustomIncentives = ({ title }: Props) => {
+  const isMobile = useIsMobile();
+
   return (
     <section className={styles.customIncentives}>
-      {items.map((item, index) => (
-        <div key={index} className={styles.customIncentivesItem}>
-          <item.icon />
-          <p>{item.text}</p>
+      {isMobile ? (
+        <Carousel itemsPerPage={1} variant="slide">
+          {items.map((item, index) => (
+            <div key={index} className={styles.customIncentivesItem}>
+              <item.icon />
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </Carousel>
+      ) : (
+        <div>
+          {items.map((item, index) => (
+            <div key={index} className={styles.customIncentivesItem}>
+              <item.icon />
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </section>
   );
 };

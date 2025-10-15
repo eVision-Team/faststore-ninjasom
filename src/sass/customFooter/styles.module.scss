@@ -169,3 +169,16 @@
         }
     }
 }
+
+@media (max-width: 1023px) {
+    .customFooter {
+        .customFooterWrapper {
+            flex-direction: column;
+            padding: 0 16px;
+
+            .formNewsletter {
+                margin-top: 40px;
+            }
+        }
+    }
+}

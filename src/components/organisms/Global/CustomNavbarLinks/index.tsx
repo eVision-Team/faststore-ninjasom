@@ -1,25 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../../../sass/customNavbarLinks/styles.module.scss";
 import menuIcon from "./icons/compre-por-departamento-icon.png";
 import Image from "next/image";
-
-const menus = [
-  {
-    label: "Compre por departamento",
-    component: require("./NavbarDepartments").default,
-    styleKey: "comprePorDepartamento",
-  },
-  { label: "Áudio", component: require("./NavbarAudio").default },
-  {
-    label: "Instrumentos",
-    component: require("./NavbarInstruments").default,
-  },
-  { label: "Promoções", styleKey: "promocoes" },
-  { label: "Nossas Lojas", styleKey: "nossasLojas" },
-];
+import MobileNavbarLinks from "./mobile/MobileNavbarLinks";
+import menus from "./menus";
+import useIsMobile from "../../../hooks/useIsMobile";
 
 const CustomNavbarLinks = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return <MobileNavbarLinks />;
+  }
 
   return (
     <div className={styles.customNavbarLinks}>

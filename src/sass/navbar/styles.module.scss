@@ -1,6 +1,16 @@
 .customNavbar {
     --fs-navbar-bkg-color: rgba(1, 4, 73, 1);
     --fs-navbar-logo-width: 174px;
+
+    @media (max-width: 1023px) {
+        height: 64px;
+
+        button[data-testid="fs-icon-button"] {
+            svg {
+                color: #fff;
+            }
+        }
+    }
 }
 
 .customNavbarButtons a span {

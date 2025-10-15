@@ -55,3 +55,16 @@
         grid-row: 2 / 3;
     }
 }
+
+@media (max-width: 1023px) {
+    .homeMusicTasteList {
+        padding: 0 16px;
+        display: flex !important;
+        flex-direction: column;
+        max-width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+}

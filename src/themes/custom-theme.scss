@@ -1,3 +1,6 @@
+@import '@faststore/ui/src/components/molecules/Carousel/styles.scss';
+
+
 // ----------------------------------------------------------
 // GLOBAL TOKENS
 // Custom Theme
@@ -458,6 +461,16 @@
     align-items: center;
     text-transform: uppercase;
     margin-bottom: 16px;
+
+    @media (max-width: 1023px) {
+      font-size: 18px !important;
+    }
+  }
+
+  .section-title {
+    @media (max-width: 1023px) {
+      padding-left: 16px;
+    }
   }
 
   .section-title::before,
@@ -582,4 +595,62 @@
       top: 140px;
     }
   }
+
+  @media(max-width: 1023px) {
+
+    .section-region-bar {
+      display: none;
+    }
+
+    .section-navbar {
+      margin: 0;
+    }
+
+    .mobileMenu {
+
+      button[data-fs-accordion-button="expanded"],
+      button[data-fs-accordion-button="collapsed"] {
+        width: 100%;
+
+        div[data-fs-button-wrapper="true"] {
+          justify-content: space-between;
+        }
+      }
+
+      div[data-fs-button-wrapper="true"] {
+        padding: 0 16px;
+      }
+
+      div[data-testid="fs-accordion"] {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    div[data-testid="fs-navbar-slider"] {
+      overflow: auto;
+
+      header {
+        padding: 0 13px 0 18px;
+        height: auto;
+        margin-bottom: 14px;
+
+        img {
+          filter: invert(85%) sepia(67%) saturate(2070%) hue-rotate(222deg) brightness(80%) contrast(127%);
+          min-width: 150px;
+        }
+      }
+    }
+
+    section[id="fs-carousel"] {
+      max-width: 100%;
+    }
+
+    .homeBrands a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
 }

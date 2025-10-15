@@ -8,3 +8,15 @@
 .homeDoubleBanners img {
     width: 100%;
 }
+
+@media (max-width: 1023px) {
+    .homeDoubleBanners {
+        padding: 0 16px;
+
+        &>div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+}

@@ -6,3 +6,9 @@
 .homeMiddleBanner img {
     width: 100%;
 }
+
+@media (max-width: 1023px ){
+    .homeMiddleBanner {
+        padding: 0 16px;
+    }
+}

@@ -19,3 +19,9 @@
     color: #313131;
     font-family: 'Montserrat';
 }
+
+@media (max-width: 1023px) {
+    .customIncentivesItem {
+        justify-content: center;
+    }
+}

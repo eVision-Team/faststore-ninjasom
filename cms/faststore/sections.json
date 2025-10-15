@@ -15,6 +15,13 @@
           "widget": {
             "ui:widget": "image-uploader"
           }
+        },
+        "imageMobile": {
+          "title": "Banner principal - Mobile",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
         }
       }
     }
@@ -82,6 +89,13 @@
           "widget": {
             "ui:widget": "image-uploader"
           }
+        },
+        "imageMobile": {
+          "title": "Banner Meio - Mobile",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
         }
       }
     }
@@ -94,6 +108,27 @@
       "properties": {
         "banners": {
           "title": "Banners",
+          "type": "array",
+          "items": {
+            "title": "Banner",
+            "type": "object",
+            "properties": {
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
+          }
+        },
+        "bannersMobile": {
+          "title": "Banners - Mobile",
           "type": "array",
           "items": {
             "title": "Banner",
