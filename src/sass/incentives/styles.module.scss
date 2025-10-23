@@ -1,8 +1,11 @@
-.customIncentives {
+.customIncentives>div {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 46px;
+}
+
+.customIncentives {
     padding: 29px 0;
     background-color: #F1F2F3;
 }

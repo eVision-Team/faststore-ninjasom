@@ -376,6 +376,13 @@
             "ui:widget": "image-uploader"
           }
         },
+        "imageMobile": {
+          "title": "Banner Principal - Mobile",
+          "type": "string",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
+        },
         "mapsLink": {
           "title": "Link do Google Maps",
           "type": "string"

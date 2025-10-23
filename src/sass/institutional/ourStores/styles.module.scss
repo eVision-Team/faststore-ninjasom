@@ -17,6 +17,10 @@
         width: 100%;
         row-gap: 60px;
 
+        @media (max-width: 1023px) {
+            justify-content: center;
+        }
+
         .store {
             text-decoration: none;
             color: #000;

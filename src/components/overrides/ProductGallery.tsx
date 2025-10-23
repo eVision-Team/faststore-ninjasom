@@ -7,7 +7,7 @@ const override: SectionOverride = {
   section: "ProductGallery",
   components: {
     __experimentalProductCard: { Component: CustomProductCard },
-    // SortSkeleton: { Component: CustomSortSkeleton },
+    SortSkeleton: { Component: CustomSortSkeleton },
   },
 };
 

@@ -1,7 +1,16 @@
 .homeBrands {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto 48px;
+}
+
+.homeBrands>div {
     display: flex;
     align-items: center;
     gap: 67px;
-    max-width: var(--fs-grid-max-width);
-    margin: 0 auto 48px;
+}
+
+@media (max-width: 1023px) {
+    .homeBrands>div {
+        display: block;
+    }
 }

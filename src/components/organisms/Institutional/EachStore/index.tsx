@@ -2,15 +2,17 @@ import React from "react";
 import styles from "../../../../sass/institutional/eachStore/styles.module.scss";
 import Image from "next/image";
 import RenderRichText from "../../../../utils/renderRichText";
-import { Link } from "@faststore/ui";
+import { Carousel, Link } from "@faststore/ui";
 import residentialPhoneIcon from "./img/house.png";
 import commercialPhoneIcon from "./img/phone.png";
 import whatsappIcon from "./img/icon-whatsapp.png";
 import emailIcon from "./img/email.png";
+import useIsMobile from "../../../hooks/useIsMobile";
 
 type Props = {
   storeImages: StoreImage[];
   image: string;
+  imageMobile: string;
   mapsLink: string;
   middleText: string;
   address: string;
@@ -28,6 +30,7 @@ export interface StoreImage {
 const EachStore = (props: Props) => {
   const {
     image,
+    imageMobile,
     mapsLink,
     middleText,
     address,
@@ -37,6 +40,9 @@ const EachStore = (props: Props) => {
     whatsappLink,
     email,
   } = props;
+  const isMobile = useIsMobile();
+
+  console.log({image, imageMobile})
 
   // 🧹 Função auxiliar para limpar e formatar números de telefone
   const formatPhoneNumber = (phone?: string) => {
@@ -55,10 +61,10 @@ const EachStore = (props: Props) => {
       <div className={styles.banner}>
         {image && (
           <Image
-            src={image}
+            src={isMobile ? imageMobile : image}
             alt="Ninja Som Nossas Lojas"
-            width={1281}
-            height={214}
+            width={isMobile ? 360 : 1281}
+            height={isMobile ? 380 : 214}
           />
         )}
       </div>
@@ -143,19 +149,33 @@ const EachStore = (props: Props) => {
       </div>
 
       {/* Store Images */}
-      {props.storeImages?.length > 0 && (
-        <div className={styles.storeImages}>
-          {props.storeImages?.map((image, index) => (
-            <Image
-              src={image.storeImage}
-              alt="Imagem da loja"
-              width={247}
-              height={247}
-              key={index}
-            />
-          ))}
+      {props.storeImages?.length > 0 ? (
+        <div className={`${styles.storeImages} storeImages`}>
+          {isMobile ? (
+            <Carousel itemsPerPage={1} variant="slide">
+              {props.storeImages.map((image, index) => (
+                <Image
+                  src={image.storeImage}
+                  alt="Imagem da loja"
+                  width={247}
+                  height={247}
+                  key={index}
+                />
+              ))}
+            </Carousel>
+          ) : (
+            props.storeImages.map((image, index) => (
+              <Image
+                src={image.storeImage}
+                alt="Imagem da loja"
+                width={247}
+                height={247}
+                key={index}
+              />
+            ))
+          )}
         </div>
-      )}
+      ) : null}
     </section>
   );
 };

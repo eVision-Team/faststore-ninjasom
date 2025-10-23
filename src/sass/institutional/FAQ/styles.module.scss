@@ -2,6 +2,12 @@
     max-width: var(--fs-grid-max-width);
     margin: 100px auto 48px;
 
+    @media (max-width: 1023px) {
+        padding: 0 16px;
+        margin: 50px auto 48px;
+
+    }
+
     h1 {
         font-size: 2.25rem;
         font-weight: 700;

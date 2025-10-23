@@ -2,11 +2,13 @@ import React from "react";
 import styles from "../../../../sass/institutional/ourStores/styles.module.scss";
 import Image from "next/image";
 import mainBanner from "./img/our-stores-banner.png";
+import mainBannerMob from "./img/main-banner-mob.png";
 import residentialPhoneIcon from "./img/house.png";
 import commercialPhoneIcon from "./img/phone.png";
 import whatsappIcon from "./img/icon-whatsapp.png";
 import RenderRichText from "../../../../utils/renderRichText";
 import { Link } from "@faststore/ui";
+import useIsMobile from "../../../hooks/useIsMobile";
 
 type Props = {
   title: string;
@@ -20,16 +22,16 @@ type Props = {
 };
 
 const OurStores = ({ stores }: { stores: Props[] }) => {
-  console.log(stores);
+  const isMobile = useIsMobile();
 
   return (
     <section className={styles.ourStores}>
       <div className={styles.banner}>
         <Image
-          src={mainBanner}
+          src={isMobile ? mainBannerMob : mainBanner}
           alt="Ninja Som Nossa Lojas"
           width={1281}
-          height={380}
+          height={isMobile ? 248 : 380}
         />
       </div>
 
