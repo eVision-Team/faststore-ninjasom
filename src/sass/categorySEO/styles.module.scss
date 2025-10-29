@@ -1,0 +1,41 @@
+.categorySEO {
+    max-width: 1260px;
+    margin: 0 auto 48px;
+    display: flex;
+
+    .left,
+    .right {
+        flex: 1;
+    }
+
+    .left {
+        height: 100%;
+        min-height: 400px;
+        max-height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url(https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/ecc4f7c3-40d3-49e6-8e74-38df4d055a36___452a8345713b397a4ba52ee0a8677d55.svg);
+        background-size: 78%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 36px;
+        background-color: #fff;
+        max-width: 535px;
+
+        p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 32px;
+            color: #000;
+
+            strong {
+                color: #0b55e2;
+                font-size: 32px;
+                font-weight: 600;
+                line-height: 32px;
+            }
+        }
+    }
+}

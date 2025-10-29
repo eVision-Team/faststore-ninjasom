@@ -16,6 +16,8 @@ import PaymentMethods from "./organisms/Institutional/PaymentMethods";
 import PrivacyPolicy from "./organisms/Institutional/PrivacyPolicy";
 import ExchangesAndReturns from "./organisms/Institutional/ExchangesAndReturns";
 import DeadlineAndDelivery from "./organisms/Institutional/DeadlineAndDelivery";
+import ProductRating from "./molecules/ProductRating";
+import CategorySEO from "./organisms/Category/CategorySEO";
 
 export default {
   CustomHero,
@@ -36,4 +38,6 @@ export default {
   PrivacyPolicy,
   ExchangesAndReturns,
   DeadlineAndDelivery,
+  ProductRating,
+  CategorySEO,
 };

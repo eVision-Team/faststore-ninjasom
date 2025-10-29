@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from "react";
 import { usePDP } from "@faststore/core";
 import styles from "../../../../sass/customProductDetailsTitle/styles.module.scss";
+import ProductRating from "../../../molecules/ProductRating";
 
 type Props = {
   title: ReactElement | ReactNode;
@@ -41,6 +42,8 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
           Referência: <span>{product?.sku}</span>
         </p>
       </div>
+
+      <ProductRating productId={product?.id} />
     </div>
   );
 };

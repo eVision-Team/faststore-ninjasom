@@ -554,5 +554,56 @@
         }
       }
     }
+  },
+  {
+    "name": "ProductRating",
+    "schema": {
+      "title": "Avaliação do Produto",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "CategorySEO",
+    "schema": {
+      "title": "Texto SEO das Categorias",
+      "type": "object",
+      "properties": {
+        "category": {
+          "title": "Categorias",
+          "type": "array",
+          "items": {
+            "title": "Categoria",
+            "type": "object",
+            "properties": {
+              "categoryPath": {
+                "title": "Caminho da Categoria",
+                "type": "string"
+              },
+              "highlightText": {
+                "title": "Texto em destaque (azul)",
+                "type": "string"
+              },
+              "text": {
+                "title": "Texto restante",
+                "type": "string"
+              },
+              "video": {
+                "title": "Link do Vídeo (Youtube)",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
   }
 ]
