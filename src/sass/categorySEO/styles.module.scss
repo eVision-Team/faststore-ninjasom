@@ -3,6 +3,10 @@
     margin: 0 auto 48px;
     display: flex;
 
+    @media (max-width: 1023px) {
+        flex-direction: column-reverse;
+    }
+
     .left,
     .right {
         flex: 1;
@@ -23,6 +27,11 @@
         padding: 36px;
         background-color: #fff;
         max-width: 535px;
+
+        @media (max-width: 1023px) {
+            min-height: initial;
+            max-height: initial;
+        }
 
         p {
             font-size: 14px;
