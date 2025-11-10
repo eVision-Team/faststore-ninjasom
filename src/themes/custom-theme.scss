@@ -275,7 +275,6 @@
     }
 
     [data-fs-image-gallery]>[data-fs-image] {
-      object-fit: cover;
 
       @include media("<notebook") {
         height: 280px;
@@ -664,17 +663,30 @@
     }
   }
 
-  @media(max-width: 1023px) {
-    div[data-fs-product-details-description-content="true"] {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+  div[data-fs-product-details-description-content="true"] {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 
-      li {
-        list-style-type: none;
+    li {
+      list-style-type: none;
+    }
+  }
+  
+  section[data-testid="fs-shipping-simulation"] {
+    div[data-fs-button-wrapper="true"] {
+      span {
+        font-size: 0;
+
+        &::before {
+          content: 'Aplicar';
+          font-size: 16px;
+        }
       }
     }
+  }
 
+  @media(max-width: 1023px) {
     .section button[aria-label="Close"] svg {
       color: #898888;
     }
