@@ -23,7 +23,7 @@ const NavbarDepartmentsMobile = () => {
   };
 
   return (
-    <div className={styles.mobileSubmenu}>
+    <div className={`${styles.mobileSubmenu} ${styles.mobileSubmenuSubitems}`}>
       <Accordion indices={indices} onChange={onChange}>
         {departments?.map(({ name, items }, index) => (
           <AccordionItem key={index}>

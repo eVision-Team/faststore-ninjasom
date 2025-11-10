@@ -102,30 +102,182 @@
 
 @media (max-width: 1023px) {
     .mobileMenu {
-        .mobileNoSubmenuLink {
-            padding-left: 16px;
-            font-weight: 600;
+
+
+        div[data-testid="fs-accordion-item"] {
+
+            &>button {
+                span {
+                    color: #898888;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 24px;
+                    letter-spacing: 0%;
+                }
+
+                div[data-fs-button-wrapper="true"] {
+                    border-radius: 0;
+                    background-color: #fff;
+                    min-height: 104px;
+                    padding: 0;
+                    border: none;
+                    border-bottom: 1px solid #969696;
+                    justify-content: flex-start;
+                    padding-right: 32px;
+                    gap: 20px;
+                    z-index: 10;
+
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 88px;
+                        height: 88px;
+                        background-image: url(https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/987d5751-6ed2-40a8-beea-ff25ff3c3500___ed9b9e2526a73cbe600d17e5fe24168a.svg);
+                        background-size: 100% 100%;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        margin-left: -1px;
+                    }
+
+                    span[data-fs-button-icon="true"] {
+                        margin-left: auto;
+                        display: block;
+
+                        &::before {
+                            content: '';
+                            display: block;
+                            width: 10px;
+                            height: 20px;
+                            background-image: url(https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/c1bbd5db-ea5f-467a-bac1-0c3b2933b5e1___8858ba0691ee8227d33697483428c104.svg);
+                            background-size: 100% 100%;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+
+                        svg {
+                            display: none;
+                        }
+                    }
+                }
+
+                &[data-fs-accordion-button="expanded"] {
+                    span {
+                        color: #044FBF;
+                        font-weight: 600;
+                    }
+
+                    div[data-fs-button-wrapper="true"] {
+                        box-shadow: 0px 4px 4px 0px #00000040;
+                        border-color: #044FBF;
+
+                        &::before {
+                            background-image: url(https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/3d40ce92-1900-49b1-8270-fa56c24f2f7e___d0a39263c18e28abadae65cfa47a56f9.svg);
+                        }
+
+                        span[data-fs-button-icon="true"] {
+                            &::before {
+                                width: 20px;
+                                height: 10px;
+                                background-image: url(https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/8a0af9c2-f482-4a4d-bbc8-865fe0bcb331___db1c17eb0eeda5098a464733bc4f76c5.svg);
+                            }
+                        }
+                    }
+
+                }
+            }
         }
 
         .mobileSubmenu {
-            padding-left: 30px;
-            padding-top: 10px;
             display: flex;
             flex-direction: column;
+            padding-left: 26px;
+            padding-top: 26px;
+            padding-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            background: #fff;
+
+            a {
+                padding: 0;
+            }
+
+            div[data-testid="fs-accordion-item"] {
+                &>button {
+                    div[data-fs-button-wrapper="true"] {
+                        padding-left: 16px;
+                        z-index: 9;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+
+                    &[data-fs-accordion-button="expanded"] {
+                        div[data-fs-button-wrapper="true"] {
+                            &::before {
+                                display: none;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            div[data-testid="fs-accordion-item"] {
+                &>button {
+                    div[data-fs-button-wrapper="true"] {
+                        min-height: 72px;
+                    }
+                }
+            }
 
             li {
                 list-style-type: none;
             }
 
             .mobileSubmenuLinks {
-                padding-left: 36px;
-                padding-top: 10px;
+                padding-left: 26px;
+                padding-top: 26px;
                 padding-bottom: 16px;
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: 22px;
+                background: #fff;
             }
         }
 
+        .mobileNoSubmenuLink {
+            padding-left: 16px;
+            border-bottom: 1px solid #969696;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background: #fff;
+            min-height: 104px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            color: #898888;
+            text-decoration: none;
+
+
+            &::before {
+                content: '';
+                display: block;
+                width: 88px;
+                height: 88px;
+                background-image: url(https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/987d5751-6ed2-40a8-beea-ff25ff3c3500___ed9b9e2526a73cbe600d17e5fe24168a.svg);
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-left: -1px;
+                margin-right: 20px;
+            }
+        }
+
+        .mobileSubmenuSubitems {
+            padding: 0;
+        }
     }
 }
