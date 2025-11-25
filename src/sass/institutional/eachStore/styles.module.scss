@@ -194,7 +194,9 @@
     }
 
     .contact {
-        margin-top: 50px;
+        @media (max-width: 1023px) {
+            margin-top: 50px;
+        }
     }
 
     .contact,
