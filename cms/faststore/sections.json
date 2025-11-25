@@ -369,6 +369,10 @@
       "title": "Loja",
       "type": "object",
       "properties": {
+        "name": {
+          "title": "Nome da loja",
+          "type": "string"
+        },
         "image": {
           "title": "Banner Principal",
           "type": "string",
@@ -383,8 +387,12 @@
             "ui:widget": "image-uploader"
           }
         },
+        "mapsLinkOutsideIframe": {
+          "title": "Link de redirecionamento para o Google Maps",
+          "type": "string"
+        },
         "mapsLink": {
-          "title": "Link do Google Maps",
+          "title": "Link do Google Maps para o iframe",
           "type": "string"
         },
         "middleText": {
@@ -400,6 +408,10 @@
           "widget": {
             "ui:widget": "draftjs-rich-text"
           }
+        },
+        "singleAddress": {
+          "title": "Endereço Único",
+          "type": "string"
         },
         "residentialPhone": {
           "title": "Telefone Residencial",
