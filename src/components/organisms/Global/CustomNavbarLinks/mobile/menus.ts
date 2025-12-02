@@ -20,7 +20,7 @@ const mobileMenus = [
     label: "Nossas Lojas",
     styleKey: "nossasLojas",
     isAccordion: false,
-    link: "/",
+    link: "/nossas-lojas",
   },
 ];
 

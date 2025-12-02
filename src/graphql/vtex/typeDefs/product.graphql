@@ -1,0 +1,9 @@
+type Query {
+  getProductById(productId: String): [Product]
+}
+
+type Product {
+  Id: Int
+  Name: String
+  Value: [String]
+}
