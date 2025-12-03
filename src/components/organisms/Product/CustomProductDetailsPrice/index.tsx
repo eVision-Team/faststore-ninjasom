@@ -21,7 +21,7 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
   listPrice,
   value,
 }) => {
-  const [getProductById, { data, loading, error }] = useQuery(
+  const [getProductById, { data }] = useQuery(
     GET_PRODUCT_DESCRIPTION
   );
   const context = usePDP();

@@ -12,7 +12,7 @@ import BuyTogetherProductCard from "./BuyTogetherProductCard";
 import BuyTogetherMainProductCard from "./BuyTogetherMainProductCard";
 
 const BuyTogether = () => {
-  const [getSimilarProducts, { data, loading, error }] =
+  const [getSimilarProducts, { data }] =
     useQuery(GET_SIMILAR_PRODUCTS);
   const mainProductContext = usePDP();
   //   const { addItem } = useCart();

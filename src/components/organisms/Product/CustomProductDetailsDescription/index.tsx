@@ -12,7 +12,7 @@ import {
 import RenderRichText from "../../../../utils/renderRichText";
 
 const CustomProductDetailsDescription = (props: any) => {
-  const [getProductById, { data, loading, error }] = useQuery(
+  const [getProductById, { data }] = useQuery(
     GET_PRODUCT_DESCRIPTION
   );
   const context = usePDP();
