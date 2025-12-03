@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@faststore/ui";
-import styles from "../../../../sass/customProductCard/styles.module.scss";
-import formatPrice from "../../../../utils/formatPrice";
+import styles from "../../../../../sass/customProductCard/styles.module.scss";
+import formatPrice from "../../../../../utils/formatPrice";
 
 type Installments = {
   count: number;
@@ -13,7 +13,10 @@ type Props = {
   showDiscountBadge?: boolean;
 };
 
-const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
+const BuyTogetherProductCard = ({
+  product,
+  showDiscountBadge = true,
+}: Props) => {
   if (!product) return null;
 
   const offer = product.offers?.offers?.[0];
@@ -38,15 +41,17 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
   const installments = getInstallments(listPrice || price);
   const imageUrl = product.image?.[0]?.url;
   const productName = product.name;
-  const productLink = `/${product.slug}/p`;
-  const sku = product.sku
+  const productLink = product.seo.canonical;
+  // const sku = product.sku;
 
-  const cleanSlug = product.slug.endsWith(`-${sku}`)
-  ? product.slug.slice(0, product.slug.length - (`-${sku}`).length)
-  : product.slug;
+  // const cleanSlug = product.slug.endsWith(`-${sku}`)
+  //   ? product.slug.slice(0, product.slug.length - `-${sku}`.length)
+  //   : product.slug;
+
+  console.log("MAIN PRODUCT", product);
 
   return (
-    <Link href={`${cleanSlug}/p`} className={styles.card}>
+    <Link href={`${productLink}`} className={styles.card}>
       <div className={styles.imageWrapper}>
         {imageUrl && (
           <img src={imageUrl} alt={productName} className={styles.image} />
@@ -65,9 +70,7 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
             <span className={styles.listPrice}>{formatPrice(listPrice)}</span>
           )}
           <span className={styles.price}>{formatPrice(price)}</span>
-          {discount > 0 && (
-            <div className={styles.pixMessage}>À vista</div>
-          )}
+          {discount > 0 && <div className={styles.pixMessage}>À vista</div>}
         </div>
 
         <div className={styles.installments}>
@@ -81,4 +84,4 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
   );
 };
 
-export default CustomProductCard;
+export default BuyTogetherProductCard;

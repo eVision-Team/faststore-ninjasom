@@ -18,6 +18,7 @@ import ExchangesAndReturns from "./organisms/Institutional/ExchangesAndReturns";
 import DeadlineAndDelivery from "./organisms/Institutional/DeadlineAndDelivery";
 import ProductRating from "./molecules/ProductRating";
 import CategorySEO from "./organisms/Category/CategorySEO";
+import BuyTogether from "./organisms/Product/BuyTogether";
 
 export default {
   CustomHero,
@@ -40,4 +41,5 @@ export default {
   DeadlineAndDelivery,
   ProductRating,
   CategorySEO,
+  BuyTogether,
 };

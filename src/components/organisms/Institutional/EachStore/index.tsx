@@ -51,8 +51,6 @@ const EachStore = (props: Props) => {
   } = props;
   const isMobile = useIsMobile();
 
-  console.log({ image, imageMobile, singleAddress });
-
   // 🧹 Função auxiliar para limpar e formatar números de telefone
   const formatPhoneNumber = (phone?: string) => {
     if (!phone) return "";

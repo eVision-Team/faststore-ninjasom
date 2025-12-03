@@ -617,5 +617,21 @@
         }
       }
     }
+  },
+  {
+    "name": "BuyTogether",
+    "schema": {
+      "title": "Compre junto",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Texto",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        }
+      }
+    }
   }
 ]

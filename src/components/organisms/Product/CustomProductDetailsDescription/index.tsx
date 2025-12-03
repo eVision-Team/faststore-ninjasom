@@ -1,37 +1,91 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePDP } from "@faststore/core";
 //@ts-ignore
 import { useLazyQuery_unstable as useQuery } from "@faststore/core/experimental";
 import { GET_PRODUCT_DESCRIPTION } from "./graphql/queries";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from "@faststore/ui";
+import RenderRichText from "../../../../utils/renderRichText";
 
 const CustomProductDetailsDescription = (props: any) => {
   const [getProductById, { data, loading, error }] = useQuery(
     GET_PRODUCT_DESCRIPTION
   );
   const context = usePDP();
+  const [indices, setIndices] = useState<Set<number>>(new Set());
+  const [productSpecifications, setProductSpecifications] = useState([]);
+
+  const onChange = (index: number) => {
+    const newSet = new Set(indices);
+    if (newSet.has(index)) {
+      newSet.delete(index);
+    } else {
+      newSet.add(index);
+    }
+    setIndices(newSet);
+  };
 
   const fetchShortDescription = async () => {
-    console.log(context.data.product.id)
-
-    await getProductById({ productId: context.data.product.isVariantOf.productGroupID });
+    await getProductById({
+      productId: context.data.product.isVariantOf.productGroupID,
+    });
   };
 
   // Sempre que "data" mudar, registra no console
   useEffect(() => {
-    console.log("Retorno da query (data):", data);
-    if (error) {
-      console.error("Erro na query:", error);
-    }
-  }, [data, error]);
+    fetchShortDescription();
+
+  }, []);
+
+  const shortDescriptionAccordions = () => {
+    if (!data?.getProductById) return null;
+
+    // Filtrar apenas os itens desejados
+    const itensDesejados = data.getProductById.filter((item: any) =>
+      ["Tipo", "Carateristicas:"].includes(item.Name)
+    );
+
+    if (itensDesejados.length === 0) return null;
+
+    // ORDEM DESEJADA
+    const ordem = ["Tipo", "Carateristicas:"];
+
+    // Ordenar manualmente
+    itensDesejados.sort((a: any, b: any) => {
+      return ordem.indexOf(a.Name) - ordem.indexOf(b.Name);
+    });
+
+    return (
+      <AccordionItem>
+        <AccordionButton>Mais informações</AccordionButton>
+        <AccordionPanel>
+          {itensDesejados.map((item: any, index: number) => (
+            <div key={index} style={{ marginBottom: "16px" }}>
+              <RenderRichText content={item.Value[0]} />
+            </div>
+          ))}
+        </AccordionPanel>
+      </AccordionItem>
+    );
+  };
 
   return (
-    <>
-      <button onClick={fetchShortDescription}>Buscar Descrição Curta</button>
-      {loading && <div>Carregando...</div>}
-      {data?.getProductById?.DescriptionShort && (
-        <div>{data.getProductById.DescriptionShort}</div>
-      )}
-    </>
+    <section className="product-description">
+      <Accordion indices={indices} onChange={onChange}>
+        <AccordionItem>
+          <AccordionButton>{props.descriptionData[0].title}</AccordionButton>
+          <AccordionPanel>
+            <RenderRichText content={props.descriptionData[0].content} />
+          </AccordionPanel>
+        </AccordionItem>
+
+        {shortDescriptionAccordions()}
+      </Accordion>
+    </section>
   );
 };
 

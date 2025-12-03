@@ -25,8 +25,6 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
     offer.availability.includes("InStock")
   )?.seller?.identifier;
 
-  console.log(context?.data);
-
   return (
     <div className={styles.customProductDetailsTitle}>
       {title}

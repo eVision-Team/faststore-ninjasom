@@ -8,6 +8,7 @@ const override: SectionOverride = {
   components: {
     __experimentalProductCard: { Component: CustomProductCard },
     SortSkeleton: { Component: CustomSortSkeleton },
+    
   },
 };
 

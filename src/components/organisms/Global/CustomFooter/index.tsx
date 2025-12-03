@@ -26,7 +26,6 @@ type Props = {
 };
 
 const CustomFooter = ({ menuSections }: Props) => {
-  console.log({ menuSections, socials });
 
   return (
     <footer className={styles.customFooter}>

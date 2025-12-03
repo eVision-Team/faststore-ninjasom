@@ -1,0 +1,36 @@
+.breadcrumbContainer {
+    max-width: var(--fs-grid-max-width);
+    margin: 0 auto;
+    padding: 20px 0;
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        li {
+            &:first-child {
+                display: flex;
+                align-items: center;
+
+                .breadcrumbSeparator {
+                    margin-left: 7px;
+                }
+            }
+        }
+
+        .breadcrumbSeparator {
+            color: #e3e6e8;
+        }
+
+        .breadcrumbCurrent {
+            color: #5d666f;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            max-width: 550px;
+        }
+    }
+}

@@ -6,16 +6,12 @@ interface SkeletonProps {
 
 const CustomSortSkeleton: React.FC<SkeletonProps> = ({ children }) => {
   useEffect(() => {
-    console.log("[SortTranslate] DOM carregado.");
-
     const select = document.querySelector("#sort-select") as HTMLSelectElement | null;
 
     if (!select) {
       console.warn("[SortTranslate] #sort-select não encontrado no DOM.");
       return;
     }
-
-    console.log("[SortTranslate] Select encontrado:", select);
 
     const translations: Record<string, string> = {
       "Price, descending": "Preço: do maior para o menor",
@@ -29,21 +25,18 @@ const CustomSortSkeleton: React.FC<SkeletonProps> = ({ children }) => {
     };
 
     const options = Array.from(select.options);
-    console.log("[SortTranslate] Opções encontradas:", options.map((o) => o.text));
 
     options.forEach((option: HTMLOptionElement) => {
       const original = option.text.trim();
       const translated = translations[original];
 
       if (translated) {
-        console.log(`[SortTranslate] Traduzindo "${original}" → "${translated}"`);
         option.text = translated;
       } else {
         console.log(`[SortTranslate] Sem tradução para "${original}"`);
       }
     });
 
-    console.log("[SortTranslate] Tradução finalizada.");
   }, []);
 
   return <>{children}</>;

@@ -1,0 +1,61 @@
+type Query {
+  getSimilarProducts(productId: String): [Product]
+}
+
+type ProductImage {
+  imageId: String
+  imageLabel: String
+  imageTag: String
+  imageUrl: String
+  imageText: String
+  imageLastModified: String
+}
+
+type Installment {
+  Value: Float
+  InterestRate: Float
+  TotalValuePlusInterestRate: Float
+  NumberOfInstallments: Int
+  PaymentSystemName: String
+  PaymentSystemGroupName: String
+  Name: String
+}
+
+type CommertialOffer {
+  Installments: [Installment]
+  DiscountHighLight: [String]
+  Price: Float
+  ListPrice: Float
+  PriceWithoutDiscount: Float
+  FullSellingPrice: Float
+  PriceToken: String
+  RewardValue: Float
+  PriceValidUntil: String
+  AvailableQuantity: Int
+  IsAvailable: Boolean
+}
+
+type Seller {
+  sellerId: String
+  sellerName: String
+  addToCartLink: String
+  sellerDefault: Boolean
+  commertialOffer: CommertialOffer
+}
+
+type ProductItem {
+  itemId: String
+  name: String
+  nameComplete: String
+  complementName: String
+  images: [ProductImage]
+  sellers: [Seller]
+}
+
+type Product {
+  productId: String
+  productName: String
+  linkText: String
+  productTitle: String
+  items: [ProductItem]
+}

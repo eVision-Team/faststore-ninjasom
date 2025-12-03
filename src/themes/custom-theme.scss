@@ -1,5 +1,7 @@
 @import '@faststore/ui/src/components/molecules/Carousel/styles.scss';
 @import "@faststore/ui/src/components/molecules/Rating/styles.scss";
+@import '@faststore/ui/src/components/molecules/Accordion/styles.scss';
+@import "@faststore/ui/src/components/atoms/Icon/styles.scss";
 
 
 // ----------------------------------------------------------
@@ -672,7 +674,7 @@
       list-style-type: none;
     }
   }
-  
+
   section[data-testid="fs-shipping-simulation"] {
     div[data-fs-button-wrapper="true"] {
       span {
@@ -683,6 +685,66 @@
           font-size: 16px;
         }
       }
+    }
+  }
+
+  .product-description {
+    div[data-testid="fs-accordion"] {
+      li {
+        list-style-type: none;
+        font-size: 16px;
+        line-height: 23px;
+      }
+
+      hr {
+        margin-top: 20px;
+      }
+
+      b {
+        display: block;
+        margin: 30px 0 10px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .section-product-details {
+    section[data-fs-content="product-details"] {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+      position: relative;
+
+      header[data-fs-product-details-title="true"] {
+        display: block;
+        grid-column: 2;
+        padding: 0;
+      }
+    }
+
+    section[data-testid="fs-image-gallery"] {
+      grid-column: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row-reverse;
+
+      img[data-fs-image="true"] {
+        object-fit: contain;
+        height: 100% !important;
+      }
+    }
+
+    section[data-fs-product-details-info="true"] {
+      grid-column: 2;
+      display: block;
+      position: sticky;
+      top: 150px;
+      height: auto;
+    }
+
+    .product-description {
+      grid-column: 1;
     }
   }
 
