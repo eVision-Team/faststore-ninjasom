@@ -24,7 +24,7 @@ type ProductOffer = {
 const CustomProductDetailsTitle = ({ title }: Props) => {
   const context = usePDP();
   const product = context?.data?.product;
-  const [getProductRefId, { data }] = useQuery(GET_PRODUCT_REF_ID);
+  const [getProductRefId, { data }] = useQuery(GET_PRODUCT_REF_ID, {});
   const seller = product?.offers?.offers?.find((offer: ProductOffer) =>
     offer.availability.includes("InStock")
   )?.seller?.identifier;

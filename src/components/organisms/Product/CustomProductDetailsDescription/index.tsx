@@ -12,9 +12,7 @@ import {
 import RenderRichText from "../../../../utils/renderRichText";
 
 const CustomProductDetailsDescription = (props: any) => {
-  const [getProductById, { data }] = useQuery(
-    GET_PRODUCT_DESCRIPTION
-  );
+  const [getProductById, { data }] = useQuery(GET_PRODUCT_DESCRIPTION, {});
   const context = usePDP();
   const [indices, setIndices] = useState<Set<number>>(new Set());
   const [productSpecifications, setProductSpecifications] = useState([]);
@@ -38,7 +36,6 @@ const CustomProductDetailsDescription = (props: any) => {
   // Sempre que "data" mudar, registra no console
   useEffect(() => {
     fetchShortDescription();
-
   }, []);
 
   const shortDescriptionAccordions = () => {
