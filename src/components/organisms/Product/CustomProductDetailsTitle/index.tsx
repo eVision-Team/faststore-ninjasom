@@ -56,7 +56,7 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
           Marca: <span>{product?.brand?.name}</span>
         </p>
         <p>
-          Referência: <span>{data?.getProductRefId?.ProductRefId}</span>
+          Referência: <span>{(data as any)?.getProductRefId?.ProductRefId}</span>
         </p>
       </div>
 
