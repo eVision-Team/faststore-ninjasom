@@ -203,7 +203,6 @@ const BuyTogether = () => {
       ) as HTMLButtonElement | null;
       minicartButton?.click();
     } catch (err) {
-      error
       console.error("Erro ao adicionar itens ao carrinho:", err);
     } finally {
       // setIsLoading(false);
