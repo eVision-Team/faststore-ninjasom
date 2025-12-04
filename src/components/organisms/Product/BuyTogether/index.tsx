@@ -12,7 +12,7 @@ import BuyTogetherProductCard from "./BuyTogetherProductCard";
 import BuyTogetherMainProductCard from "./BuyTogetherMainProductCard";
 
 const BuyTogether = () => {
-  const [getSimilarProducts, { data, loading, error }] = useQuery(GET_SIMILAR_PRODUCTS);
+  const [getSimilarProducts, { data, isLoading }] = useQuery(GET_SIMILAR_PRODUCTS);
   const mainProductContext = usePDP();
   //   const { addItem } = useCart();
 
@@ -38,7 +38,7 @@ const BuyTogether = () => {
   const mainProductId = mainProductContext?.data?.product?.productId;
   const mainProduct = mainProductContext?.data?.product;
   const [similarProducts, setSimilarProducts] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // useMemo para calcular valores de produto e evitar recalcular a cada renderização
   const firstProduct = useMemo(() => similarProducts[0], [similarProducts]);
@@ -185,7 +185,7 @@ const BuyTogether = () => {
       return;
     }
 
-    setIsLoading(true);
+    // setIsLoading(true);
 
     console.log({ itemsToAdd });
 
@@ -206,7 +206,7 @@ const BuyTogether = () => {
       error
       console.error("Erro ao adicionar itens ao carrinho:", err);
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
@@ -262,10 +262,10 @@ const BuyTogether = () => {
           </div>
           <button
             onClick={handleAddToCart}
-            disabled={loading}
-            aria-busy={loading}
+            disabled={isLoading}
+            aria-busy={isLoading}
           >
-            {loading ? "Adicionando..." : "Adicionar ao carrinho"}
+            {isLoading ? "Adicionando..." : "Adicionar ao carrinho"}
           </button>
         </div>
       </div>
