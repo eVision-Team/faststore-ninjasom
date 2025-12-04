@@ -39,7 +39,7 @@ const CustomProductDetailsDescription = (props: any) => {
   }, []);
 
   const shortDescriptionAccordions = () => {
-    if (!data?.getProductById) return null;
+    if (!data?.getProductById as any) return null;
 
     // Filtrar apenas os itens desejados
     const itensDesejados = data.getProductById.filter((item: any) =>
