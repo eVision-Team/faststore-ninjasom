@@ -42,7 +42,7 @@ const CustomProductDetailsDescription = (props: any) => {
     if (!(data as any)?.getProductById) return null;
 
     // Filtrar apenas os itens desejados
-    const itensDesejados = data.getProductById.filter((item: any) =>
+    const itensDesejados = (data as any).getProductById.filter((item: any) =>
       ["Tipo", "Carateristicas:"].includes(item.Name)
     );
 

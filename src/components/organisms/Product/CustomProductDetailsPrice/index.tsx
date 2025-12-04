@@ -39,7 +39,7 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
     console.log("AAAAAAAAAAAAA", context.data.product);
   }, [data]);
 
-  const garantia = data?.getProductById?.find(
+  const garantia = (data as any)?.getProductById?.find(
     (item: any) => item.Name === "Descrição Curta na Página de Produto"
   )?.Value[0];
   const hasDiscount = listPrice > value;
