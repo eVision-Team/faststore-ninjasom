@@ -12,7 +12,7 @@ import BuyTogetherProductCard from "./BuyTogetherProductCard";
 import BuyTogetherMainProductCard from "./BuyTogetherMainProductCard";
 
 const BuyTogether = () => {
-  const [getSimilarProducts, { data }] = useQuery(GET_SIMILAR_PRODUCTS);
+  const [getSimilarProducts, { data, loading, error }] = useQuery(GET_SIMILAR_PRODUCTS);
   const mainProductContext = usePDP();
   //   const { addItem } = useCart();
 
@@ -202,8 +202,9 @@ const BuyTogether = () => {
         ".customNavbarButtons button[data-testid='cart-toggle']"
       ) as HTMLButtonElement | null;
       minicartButton?.click();
-    } catch (error) {
-      console.error("Erro ao adicionar itens ao carrinho:", error);
+    } catch (err) {
+      error
+      console.error("Erro ao adicionar itens ao carrinho:", err);
     } finally {
       setIsLoading(false);
     }
@@ -261,10 +262,10 @@ const BuyTogether = () => {
           </div>
           <button
             onClick={handleAddToCart}
-            disabled={isLoading}
-            aria-busy={isLoading}
+            disabled={loading}
+            aria-busy={loading}
           >
-            {isLoading ? "Adicionando..." : "Adicionar ao carrinho"}
+            {loading ? "Adicionando..." : "Adicionar ao carrinho"}
           </button>
         </div>
       </div>
