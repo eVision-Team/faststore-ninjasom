@@ -38,7 +38,6 @@ const BuyTogether = () => {
     }
   }, [data]);
 
-  const mainProductId = mainProductContext?.data?.product?.productId;
   const mainProduct = mainProductContext?.data?.product;
   const [similarProducts, setSimilarProducts] = useState<any>([]);
   // const [isLoading, setIsLoading] = useState(false);
