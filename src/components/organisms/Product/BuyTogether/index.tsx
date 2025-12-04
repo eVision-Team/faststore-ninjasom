@@ -33,8 +33,8 @@ const BuyTogether = () => {
   useEffect(() => {
     // console.log("AAAAAAAAAAAAA", data);
 
-    if (data?.getSimilarProducts) {
-      setSimilarProducts(data.getSimilarProducts);
+    if ((data as any)?.getSimilarProducts) {
+      setSimilarProducts((data as any).getSimilarProducts);
     }
   }, [data]);
 
