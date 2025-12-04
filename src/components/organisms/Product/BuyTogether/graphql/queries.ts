@@ -6,6 +6,7 @@ export const GET_SIMILAR_PRODUCTS = gql(`
   getSimilarProducts(productId: $productId) {
     productId
     productName
+    brand
     linkText
     productTitle
     items {

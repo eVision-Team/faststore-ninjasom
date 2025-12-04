@@ -8,6 +8,12 @@
         align-items: center;
         gap: 10px;
 
+        @media (max-width: 1023px) {
+            flex-wrap: wrap;
+            padding: 0px 16px;
+            margin-bottom: 20px;
+        }
+
         li {
             &:first-child {
                 display: flex;
@@ -31,6 +37,10 @@
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;
             max-width: 550px;
+
+            @media (max-width: 1023px) {
+                max-width: 110px;
+            }
         }
     }
 }

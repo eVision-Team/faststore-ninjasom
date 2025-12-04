@@ -38,7 +38,7 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
   }, []);
 
   useEffect(() => {
-    console.log("AAAAAAAAAAAAA", data);
+    console.log("AAAAAAAAAAAAA", context.data.product);
   }, [data]);
 
   const garantia = data?.getProductById?.find(
@@ -74,8 +74,7 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
         ou{" "}
         <strong>
           {installments.count}x de {formatPrice(installments.value)}
-        </strong>{" "}
-        sem juros
+        </strong>
       </div>
       {garantia && (
         <div className={styles.garantia}>

@@ -1,7 +1,10 @@
-import React, { ReactElement, ReactNode } from "react";
+import React, { ReactElement, ReactNode, useEffect } from "react";
 import { usePDP } from "@faststore/core";
 import styles from "../../../../sass/customProductDetailsTitle/styles.module.scss";
 import ProductRating from "../../../molecules/ProductRating";
+//@ts-ignore
+import { useLazyQuery_unstable as useQuery } from "@faststore/core/experimental";
+import { GET_PRODUCT_REF_ID } from "./graphql/queries";
 
 type Props = {
   title: ReactElement | ReactNode;
@@ -21,9 +24,25 @@ type ProductOffer = {
 const CustomProductDetailsTitle = ({ title }: Props) => {
   const context = usePDP();
   const product = context?.data?.product;
+  const [getProductRefId, { data }] = useQuery(GET_PRODUCT_REF_ID);
   const seller = product?.offers?.offers?.find((offer: ProductOffer) =>
     offer.availability.includes("InStock")
   )?.seller?.identifier;
+
+  const fetchShortDescription = async () => {
+    await getProductRefId({
+      productId: context.data.product.id,
+    });
+  };
+
+  // Sempre que "data" mudar, registra no console
+  useEffect(() => {
+    fetchShortDescription();
+  }, []);
+
+  useEffect(() => {
+    console.log("AAAAAAAAAAAAA", data);
+  }, [data]);
 
   return (
     <div className={styles.customProductDetailsTitle}>
@@ -37,7 +56,7 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
           Marca: <span>{product?.brand?.name}</span>
         </p>
         <p>
-          Referência: <span>{product?.sku}</span>
+          Referência: <span>{data?.getProductRefId?.ProductRefId}</span>
         </p>
       </div>
 

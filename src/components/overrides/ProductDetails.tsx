@@ -14,6 +14,7 @@ const override: SectionOverride = {
       Component: CustomProdutDetailsDescription,
     },
     ImageGalleryViewer: { Component: CustomImageGalleryViewer },
+    
   },
 };
 

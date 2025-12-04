@@ -48,8 +48,6 @@ const BuyTogetherProductCard = ({
   //   ? product.slug.slice(0, product.slug.length - `-${sku}`.length)
   //   : product.slug;
 
-  console.log("MAIN PRODUCT", product);
-
   return (
     <Link href={`${productLink}`} className={styles.card}>
       <div className={styles.imageWrapper}>

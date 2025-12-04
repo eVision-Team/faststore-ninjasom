@@ -8,7 +8,7 @@ const override: SectionOverride = {
   components: {
     Navbar: { props: { className: styles.customNavbar } },
     NavbarRow: { props: { className: styles.customNavbar } },
-    NavbarButtons: { props: { className: styles.customNavbarButtons } },
+    NavbarButtons: { props: { className: `${styles.customNavbarButtons} customNavbarButtons` } },
     NavbarLinks: { Component: () => <CustomNavbarLinks /> },
     NavbarSliderFooter: { props: { className: styles.customNavbarSliderFooter } },
   },

@@ -1,0 +1,7 @@
+type Query {
+  getProductRefId(productId: String): Product
+}
+
+type Product {
+    ProductRefId: String
+}

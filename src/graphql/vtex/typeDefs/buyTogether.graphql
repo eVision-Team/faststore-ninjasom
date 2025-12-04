@@ -55,6 +55,7 @@ type ProductItem {
 type Product {
   productId: String
   productName: String
+  brand: String
   linkText: String
   productTitle: String
   items: [ProductItem]

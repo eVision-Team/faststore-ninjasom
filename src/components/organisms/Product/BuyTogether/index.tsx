@@ -12,8 +12,7 @@ import BuyTogetherProductCard from "./BuyTogetherProductCard";
 import BuyTogetherMainProductCard from "./BuyTogetherMainProductCard";
 
 const BuyTogether = () => {
-  const [getSimilarProducts, { data }] =
-    useQuery(GET_SIMILAR_PRODUCTS);
+  const [getSimilarProducts, { data }] = useQuery(GET_SIMILAR_PRODUCTS);
   const mainProductContext = usePDP();
   //   const { addItem } = useCart();
 
@@ -63,7 +62,11 @@ const BuyTogether = () => {
   }, [mainProduct, firstProduct, secondProduct]);
 
   useEffect(() => {
-    console.log("DSAUDHASUHDSUAHAD", { mainProduct,firstProduct, secondProduct });
+    console.log("DSAUDHASUHDSUAHAD", {
+      mainProduct,
+      firstProduct,
+      secondProduct,
+    });
   }, [similarProducts]);
 
   const itemsToAdd = useMemo(
@@ -71,17 +74,106 @@ const BuyTogether = () => {
       {
         id: mainProduct?.id ?? "",
         quantity: 1,
-        seller: mainProduct?.offers?.offers[0]?.seller?.identifier ?? "",
+        seller: mainProduct?.offers?.offers[0]?.seller ?? "",
+        itemOffered: {
+          additionalProperty: mainProduct?.additionalProperty,
+          brand: mainProduct?.brand,
+          gtin: mainProduct?.gtin,
+          image: mainProduct?.image,
+          isVariantOf: mainProduct?.isVariantOf,
+          name: mainProduct?.name,
+          sku: mainProduct?.sku,
+          unitMultiplier: mainProduct?.unitMultiplier,
+        },
+        listPrice: mainProduct?.offers?.offers[0]?.listPrice ?? 0,
+        listPriceWithTaxes:
+          mainProduct?.offers?.offers[0]?.listPriceWithTaxes ?? 0,
+        price: mainProduct?.offers?.offers[0]?.price ?? 0,
+        priceWithTaxes: mainProduct?.offers?.offers[0]?.priceWithTaxes ?? 0,
       },
       {
         id: firstProduct?.items[0].itemId ?? "",
         quantity: 1,
-        seller: firstProduct?.items?.[0]?.sellers?.[0]?.sellerId ?? "",
+        seller: {
+          identifier: firstProduct?.items?.[0]?.sellers?.[0]?.sellerId ?? "",
+        },
+        itemOffered: {
+          additionalProperty: [],
+          brand: {
+            name: firstProduct?.brand?.name,
+          },
+          gtin: "",
+          image:
+            firstProduct?.items[0]?.images?.map((img: any) => ({
+              alternateName: img?.imageLabel ?? "",
+              url: img?.imageUrl ?? "",
+            })) ?? [],
+          isVariantOf: {
+            name: firstProduct?.productName,
+            productGroupID: firstProduct?.productId,
+            skuVariants: {
+              activeVariations: {},
+              allVariantProducts: {
+                name: firstProduct?.productName,
+                productID: firstProduct?.productId,
+              },
+              availableVariations: {},
+              slugsMap: {},
+            },
+          },
+          name: firstProduct?.productName,
+          sku: firstProduct?.items[0].itemId ?? "",
+          unitMultiplier: 1,
+        },
+        listPrice:
+          firstProduct?.items[0].sellers[0].commertialOffer.ListPrice ?? 0,
+        listPriceWithTaxes:
+          firstProduct?.items[0].sellers[0].commertialOffer.ListPrice ?? 0,
+        price: firstProduct?.items[0].sellers[0].commertialOffer.Price ?? 0,
+        priceWithTaxes:
+          firstProduct?.items[0].sellers[0].commertialOffer.Price ?? 0,
       },
       {
         id: secondProduct?.items[0].itemId ?? "",
         quantity: 1,
-        seller: secondProduct?.items?.[0]?.sellers?.[0]?.sellerId ?? "",
+        seller: {
+          identifier: firstProduct?.items?.[0]?.sellers?.[0]?.sellerId ?? "",
+        },
+        itemOffered: {
+          additionalProperty: [],
+          brand: {
+            name: secondProduct?.brand?.name,
+          },
+          gtin: "",
+          image:
+            secondProduct?.items[0]?.images?.map((img: any) => ({
+              alternateName: img?.imageLabel ?? "",
+              url: img?.imageUrl ?? "",
+            })) ?? [],
+          isVariantOf: {
+            name: secondProduct?.productName,
+            productGroupID: secondProduct?.productId,
+            skuVariants: {
+              activeVariations: {},
+              allVariantProducts: {
+                name: secondProduct?.productName,
+                productID: secondProduct?.productId,
+              },
+              availableVariations: {},
+              slugsMap: {},
+            },
+          },
+          name: secondProduct?.productName,
+          sku: secondProduct?.items[0].itemId ?? "",
+          unitMultiplier: 1,
+        },
+        listPrice:
+          secondProduct?.items[0].sellers[0].commertialOffer.ListPrice ?? 0,
+        listPriceWithTaxes:
+          secondProduct?.items[0].sellers[0].commertialOffer.ListPrice ?? 0,
+        price: secondProduct?.items[0].sellers[0].commertialOffer.Price ?? 0,
+        priceWithTaxes:
+          secondProduct?.items[0].sellers[0].commertialOffer.Price ?? 0,
       },
     ],
     [mainProduct, firstProduct, secondProduct]
@@ -95,15 +187,19 @@ const BuyTogether = () => {
 
     setIsLoading(true);
 
-    try {
-      await Promise.all(itemsToAdd.map((item) => {
-        console.log("item", item);
+    console.log({ itemsToAdd });
 
-        return cartStore.addItem(item)
-      }));
+    try {
+      await Promise.all(
+        itemsToAdd.map((item) => {
+          console.log("item", item);
+
+          return cartStore.addItem(item);
+        })
+      );
 
       const minicartButton = document.querySelector(
-        ".vtex-minicart-2-x-openIconContainer .vtex-button"
+        ".customNavbarButtons button[data-testid='cart-toggle']"
       ) as HTMLButtonElement | null;
       minicartButton?.click();
     } catch (error) {
@@ -168,15 +264,7 @@ const BuyTogether = () => {
             disabled={isLoading}
             aria-busy={isLoading}
           >
-            {isLoading ? (
-              <img
-                src="/arquivos/loading.gif"
-                alt="Carregando..."
-                style={{ maxWidth: "31.2px" }}
-              />
-            ) : (
-              "Adicionar ao carrinho"
-            )}
+            {isLoading ? "Adicionando..." : "Adicionar ao carrinho"}
           </button>
         </div>
       </div>
