@@ -40,10 +40,6 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
     fetchShortDescription();
   }, []);
 
-  useEffect(() => {
-    console.log("AAAAAAAAAAAAA", data);
-  }, [data]);
-
   return (
     <div className={styles.customProductDetailsTitle}>
       {title}
@@ -60,7 +56,7 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
         </p>
       </div>
 
-      <ProductRating productId={product?.id} />
+      {/* <ProductRating productId={product?.id} /> */}
     </div>
   );
 };

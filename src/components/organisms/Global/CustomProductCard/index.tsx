@@ -46,7 +46,7 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
   : product.slug;
 
   return (
-    <Link href={`${cleanSlug}/p`} className={styles.card}>
+    <Link href={`/${cleanSlug}/p`} className={styles.card}>
       <div className={styles.imageWrapper}>
         {imageUrl && (
           <img src={imageUrl} alt={productName} className={styles.image} />

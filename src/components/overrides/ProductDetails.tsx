@@ -3,7 +3,7 @@ import styles from "../../sass/productShelf/styles.module.scss";
 import CustomProductDetailsPrice from "../organisms/Product/CustomProductDetailsPrice";
 import CustomProductDetailsTitle from "../organisms/Product/CustomProductDetailsTitle";
 import CustomProdutDetailsDescription from "../organisms/Product/CustomProductDetailsDescription";
-import CustomImageGalleryViewer from "../organisms/Product/CustomImageGalleryViewer";
+import CustomImageGallery from "../organisms/Product/CustomImageGallery";
 
 const override: SectionOverride = {
   section: "ProductDetails",
@@ -13,8 +13,8 @@ const override: SectionOverride = {
     __experimentalProductDescription: {
       Component: CustomProdutDetailsDescription,
     },
-    ImageGalleryViewer: { Component: CustomImageGalleryViewer },
-    
+    ImageGalleryViewer: { Component: () => null },
+    ImageGallery: { Component: CustomImageGallery },
   },
 };
 

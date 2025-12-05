@@ -35,10 +35,6 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
     fetchGarantia();
   }, []);
 
-  useEffect(() => {
-    console.log("AAAAAAAAAAAAA", context.data.product);
-  }, [data]);
-
   const garantia = (data as any)?.getProductById?.find(
     (item: any) => item.Name === "Descrição Curta na Página de Produto"
   )?.Value[0];
@@ -53,6 +49,14 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
   };
 
   const installments = getInstallments(listPrice || value);
+  const offer = context.data.product.offers?.offers?.[0];
+  const price = offer?.price ?? 0;
+
+  // calcula desconto %
+  const discount =
+    listPrice && listPrice > price
+      ? Math.round(((listPrice - price) / listPrice) * 100)
+      : 0;
 
   return (
     <div className={styles.customProductDetailsPrice}>
@@ -60,7 +64,12 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
         <div className={styles.prices}>
           <span className={styles.listPrice}>De {formatPrice(listPrice)}</span>
           <span className={styles.value}>
-            Por <strong>{formatPrice(value)}</strong> à vista
+            <div>
+              Por <strong>{formatPrice(value)}</strong> à vista
+            </div>
+            {discount > 0 && (
+              <span className={styles.discountBadge}>{discount}% Off</span>
+            )}
           </span>
         </div>
       ) : (

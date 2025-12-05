@@ -63,13 +63,6 @@ const BuyTogether = () => {
     );
   }, [mainProduct, firstProduct, secondProduct]);
 
-  useEffect(() => {
-    console.log("DSAUDHASUHDSUAHAD", {
-      mainProduct,
-      firstProduct,
-      secondProduct,
-    });
-  }, [similarProducts]);
 
   const itemsToAdd = useMemo(
     () => [
@@ -189,13 +182,9 @@ const BuyTogether = () => {
 
     // setIsLoading(true);
 
-    console.log({ itemsToAdd });
-
     try {
       await Promise.all(
         itemsToAdd.map((item) => {
-          console.log("item", item);
-
           return cartStore.addItem(item);
         })
       );
@@ -211,7 +200,7 @@ const BuyTogether = () => {
     }
   };
 
-  //   if (!similarProducts.length) return null;
+  if (!similarProducts.length) return null;
 
   return (
     <section className={styles.buyTogether}>
