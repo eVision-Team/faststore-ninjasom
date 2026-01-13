@@ -26,7 +26,7 @@ const CustomImageGallery = (props: any) => {
   }, []);
 
   const apiVideos = useMemo(() => {
-    const list = data?.getProductRefId?.Videos;
+    const list = (data as any)?.getProductRefId?.Videos;
     if (!Array.isArray(list)) return [];
 
     return list.map((url: string) => ({
