@@ -1,39 +1,49 @@
+import jblIcon from "../../img/jbl.png";
+import behringerIcon from "../../img/behringer.png";
+import yamahaIcon from "../../img/yamaha.png";
+import shureIcon from "../../img/shure.png";
+import fenderIcon from "../../img/fender.png";
+import rcfIcon from "../../img/rcf.png";
+import electrovoiceIcon from "../../img/electrovoice.png";
+import rolandIcon from "../../img/roland.png";
+import tagimaIcon from "../../img/tagima.png";
+
 export const icons = [
   {
     name: "JBL",
-    link: "https://logo.clearbit.com/jbl.com",
+    link: jblIcon.src,
   },
   {
     name: "Behringer",
-    link: "https://logo.clearbit.com/behringer.com",
+    link: behringerIcon.src,
   },
   {
     name: "Yamaha",
-    link: "https://logo.clearbit.com/yamaha.com",
+    link: yamahaIcon.src,
   },
   {
     name: "Shure",
-    link: "https://logo.clearbit.com/shure.com",
+    link: shureIcon.src,
   },
   {
     name: "Fender",
-    link: "https://logo.clearbit.com/fender.com",
+    link: fenderIcon.src,
   },
   {
     name: "RCF",
-    link: "https://logo.clearbit.com/rcf.it",
+    link: rcfIcon.src,
   },
   {
     name: "Electrovoice",
-    link: "https://logo.clearbit.com/electrovoice.com",
+    link: electrovoiceIcon.src,
   },
   {
     name: "Roland",
-    link: "https://logo.clearbit.com/roland.com",
+    link: rolandIcon.src,
   },
   {
     name: "Tagima",
-    link: "https://logo.clearbit.com/tagima.com.br",
+    link: tagimaIcon.src,
   },
   {
     name: "QSC",

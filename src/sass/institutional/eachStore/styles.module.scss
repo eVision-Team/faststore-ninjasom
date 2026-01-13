@@ -3,8 +3,8 @@
     margin: 0 auto;
 
     iframe {
-        min-width: 552px;
-        height: 400px;
+        min-width: 300px;
+        height: 600px;
 
         @media(max-width: 1023px) {
             min-width: initial;
@@ -78,6 +78,11 @@
                 align-items: center;
                 gap: 10px;
 
+                @media (max-width: 1023px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
                 a {
                     background: #3b82f6;
                     color: white;
@@ -146,79 +151,93 @@
             }
         }
     }
-}
 
-.rightInfo {
-    min-width: 260px;
-    display: flex;
-    padding: 64px 52px;
-    background-color: #2563eb;
-    margin-top: 64px;
-
-    @media(max-width: 1023px) {
-        flex-direction: column;
-    }
-
-    .address {
+    .rightInfo {
+        min-width: 300px;
         display: flex;
         flex-direction: column;
-        gap: 32px;
-    }
+        gap: 30px;
 
-    .socials {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-
-        img {
-            max-width: 23px;
-            max-height: 23px;
-        }
-    }
-
-    .address p {
-        line-height: 24px;
-    }
-
-    h2 {
-        font-size: 1.875rem;
-        font-weight: bold;
-        margin-bottom: 1.5rem;
-        color: #fff;
-    }
-
-    p {
-        font-size: 1.125rem;
-        line-height: 1.8 !important;
-        color: #fff;
-    }
-
-    .contact {
         @media (max-width: 1023px) {
-            margin-top: 50px;
+            gap: 0;
         }
-    }
 
-    .contact,
-    .address {
-        min-width: 544px;
-
-        @media(max-width: 1023px) {
-            min-width: initial;
+        .address {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
         }
-    }
 
-    .contactWrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 10px;
-
-        a {
+        .socials {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #fff;
+            gap: 4px;
+
+            img {
+                max-width: 23px;
+                max-height: 23px;
+            }
+
+            a {
+                color: black;
+                background-color: #010449;
+            }
+        }
+
+        .address p {
+            line-height: 24px;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.8 !important;
+        }
+
+        .contact {
+            a {
+                color: #000;
+                text-decoration: underline;
+            }
+
+            @media (max-width: 1023px) {
+                margin-top: 50px;
+            }
+        }
+
+        .contactWrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    }
+}
+
+.shareButtons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    button {
+        cursor: pointer;
+        padding: 0;
+
+        &:last-child {
+            img {
+                filter: invert(31%) sepia(13%) saturate(2496%) hue-rotate(182deg) brightness(100%) contrast(87%);
+            }
         }
     }
 }
@@ -278,7 +297,8 @@
 }
 
 .brand-icon {
-    height: 50px;
+    max-width: 230px;
+    max-height: 50px;
     margin: 0 40px;
     display: inline-block;
     opacity: 0.7;

@@ -11,6 +11,7 @@ import useIsMobile from "../../../hooks/useIsMobile";
 import WhatsappIcon from "./img/WhatsappIcon";
 import Brands from "./components/Brands/index";
 import HighlightProducts from "./components/HighlightProducts";
+import ShareButtons from "./components/ShareButtons";
 
 type Props = {
   storeImages: StoreImage[];
@@ -62,6 +63,8 @@ const EachStore = (props: Props) => {
   const formattedResidential = formatPhoneNumber(residentialPhone);
   const formattedCommercial = formatPhoneNumber(commercialPhone);
 
+  console.log({ residentialPhone });
+
   return (
     <section className={styles.eachStore}>
       {/* Banner */}
@@ -92,9 +95,13 @@ const EachStore = (props: Props) => {
             <WhatsappIcon />
             Falar no whatsapp
           </a>
-          <div>
-            <a href={mapsLinkOutsideIframe} target="_blank">Abrir no Google Maps</a>
-            <a href={`tel:${residentialPhone}`}>Ligue agora!</a>
+          <div className={styles.bannerButons}>
+            <a href={mapsLinkOutsideIframe} target="_blank">
+              Abrir no Google Maps
+            </a>
+            <a href={`tel:${formattedResidential}`}>
+              Ligue para {residentialPhone}!
+            </a>
           </div>
         </div>
       </div>
@@ -105,110 +112,119 @@ const EachStore = (props: Props) => {
 
       {/* Info */}
       <div className={styles.storeInfo}>
-        {/* Texto do meio */}
-        <div className={styles.middleInfo}>
-          <RenderRichText content={middleText} />
-
-          <a
-            href={whatsappLink}
-            target="_blank"
-            className={styles.whatsappButton}
-          >
-            <WhatsappIcon />
-            Falar no whatsapp
-          </a>
-        </div>
-
         {/* Mapa */}
         {mapsLink && (
           <iframe
             src={mapsLink}
-            width="552"
-            height="400"
+            width="300"
+            height="480"
             style={{ border: 0 }}
             loading="lazy"
           ></iframe>
         )}
-      </div>
+        {/* Texto do meio */}
+        <div className={styles.middleInfo}>
+          <RenderRichText content={middleText} />
 
-      {/* Lado direito */}
-      <div className={styles.rightInfo}>
-        {/* Endereço */}
-        {address && (
-          <div className={styles.address}>
-            <RenderRichText content={address} />
+          <div className={styles.sharePage}>
+            <a
+              href={whatsappLink}
+              target="_blank"
+              className={styles.whatsappButton}
+            >
+              <WhatsappIcon />
+              Falar no whatsapp
+            </a>
 
-            <div className={styles.socials}>
-              <a target="_blank" href="https://www.instagram.com/ninjasom">
-                <img src="https://ninjasom.vtexassets.com/arquivos/instagram-io.png" />
-              </a>
-              <a
-                target="_blank"
-                href="https://www.facebook.com/ninjasomoficial"
-              >
-                <img src="https://ninjasom.vtexassets.com/arquivos/facebook-io.png" />
-              </a>
-              <a
-                target="_blank"
-                href="https://www.youtube.com/@ninjasomoficial"
-              >
-                <img src="https://ninjasom.vtexassets.com/arquivos/youtube-io.png" />
-              </a>
-              <a
-                target="_blank"
-                href=" https://www.tiktok.com/@ninja.som"
-                title=""
-              >
-                <img src="https://ninjasom.vtexassets.com/arquivos/tiktok-io.png" />
-              </a>
-            </div>
+            <p>
+              <strong>Compartilhe nossa loja:</strong>
+            </p>
+
+            <ShareButtons />
           </div>
-        )}
+        </div>
+        {/* Lado direito */}
+        <div className={styles.rightInfo}>
+          {/* Endereço */}
+          {address && (
+            <div className={styles.address}>
+              <RenderRichText content={address} />
 
-        {/* Contato */}
-        <div className={styles.contact}>
-          <h2>Contato</h2>
+              <div className={styles.socials}>
+                <a target="_blank" href="https://www.instagram.com/ninjasom">
+                  <img src="https://ninjasom.vtexassets.com/arquivos/instagram-io.png" />
+                </a>
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/ninjasomoficial"
+                >
+                  <img src="https://ninjasom.vtexassets.com/arquivos/facebook-io.png" />
+                </a>
+                <a
+                  target="_blank"
+                  href="https://www.youtube.com/@ninjasomoficial"
+                >
+                  <img src="https://ninjasom.vtexassets.com/arquivos/youtube-io.png" />
+                </a>
+                <a
+                  target="_blank"
+                  href=" https://www.tiktok.com/@ninja.som"
+                  title=""
+                >
+                  <img src="https://ninjasom.vtexassets.com/arquivos/tiktok-io.png" />
+                </a>
+              </div>
+            </div>
+          )}
 
-          <div className={styles.contactWrapper}>
-            {residentialPhone && (
-              <Link
-                href={`tel:${formattedResidential}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src={residentialPhoneIcon} alt="Telefone residencial" />
-                {residentialPhone}
-              </Link>
-            )}
+          {/* Contato */}
+          <div className={styles.contact}>
+            <h2>Contato</h2>
 
-            {commercialPhone && (
-              <Link
-                href={`tel:${formattedCommercial}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src={commercialPhoneIcon} alt="Telefone comercial" />
-                {commercialPhone}
-              </Link>
-            )}
+            <div className={styles.contactWrapper}>
+              {residentialPhone && (
+                <Link
+                  href={`tel:${formattedResidential}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={residentialPhoneIcon}
+                    alt="Telefone residencial"
+                  />
+                  {residentialPhone}
+                </Link>
+              )}
 
-            {whatsappPhone && (
-              <Link
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src={whatsappIcon} alt="Whatsapp" />
-                {whatsappPhone}
-              </Link>
-            )}
+              {commercialPhone && (
+                <Link
+                  href={`tel:${formattedCommercial}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={commercialPhoneIcon} alt="Telefone comercial" />
+                  {commercialPhone}
+                </Link>
+              )}
 
-            {email && (
-              <Link href={`mailto:${email}`}>
-                <Image src={emailIcon} alt="Email" />
-                {email}
-              </Link>
-            )}
+              {whatsappPhone && (
+                <Link
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={whatsappIcon} alt="Whatsapp" />
+                  {whatsappPhone}
+                </Link>
+              )}
+
+              {email && (
+                <Link href={`mailto:${email}`}>
+                  <Image src={emailIcon} alt="Email" />
+                  {email}
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>
