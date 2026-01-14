@@ -1,8 +1,6 @@
 // import { useState } from "react";
 // import iconNewsletter from "./icons/newsletter.png";
 // import styles from "../../../../sass/customFooter/styles.module.scss";
-import Image from "next/image";
-import NewsletterIcon from "./icons/newsletter.png";
 // import { Link } from "@faststore/ui";
 
 // function Newsletter() {
@@ -135,9 +133,9 @@ const RDStationForm = () => {
 
   return (
     <div className={styles.newsletterContainer}>
-      <h2>
-        <Image src={NewsletterIcon} alt="Newsletter" /> Newsletter
-      </h2>
+      <h4>
+        Novidades e Ofertas Ninja
+      </h4>
       <div
         role="main"
         id="ofertasenovidades_form_vertical-11a6161cffc4e5f53af5"

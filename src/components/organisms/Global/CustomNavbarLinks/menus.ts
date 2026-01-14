@@ -9,8 +9,8 @@ const menus = [
     label: "Instrumentos",
     component: require("./NavbarInstruments").default,
   },
-  { label: "Promoções", styleKey: "promocoes" },
-  { label: "Nossas Lojas", styleKey: "nossasLojas" },
+  { label: "Promoções", styleKey: "promocoes", link: "/promocoes" },
+  { label: "Nossas Lojas", styleKey: "nossasLojas", link: "/nossas-lojas" },
 ];
 
 export default menus;

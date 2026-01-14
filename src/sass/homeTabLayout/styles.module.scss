@@ -42,9 +42,12 @@
         margin-top: 70px;
 
         .tabs {
-            flex-wrap: wrap;
             padding: 0 16px;
-            gap: 9px;
+            overflow: auto;
+            max-width: 360px;
+            padding-bottom: 10px;
+            gap: 15px;
+            padding-right: 0;
         }
     }
 }

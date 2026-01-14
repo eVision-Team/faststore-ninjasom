@@ -5,7 +5,7 @@ import TruckIcon from "./icons/TruckIcon";
 import MascotIcon from "./icons/MascotIcon";
 import styles from "../../../../sass/incentives/styles.module.scss";
 import useIsMobile from "../../../hooks/useIsMobile";
-import { Carousel } from "@faststore/ui";
+import { Carousel, Link } from "@faststore/ui";
 
 type Props = {
   title: string;
@@ -27,6 +27,7 @@ const items = [
   {
     icon: MascotIcon,
     text: "Central de Atendimento",
+    link: "https://whts.co/ninjasom",
   },
 ];
 
@@ -37,21 +38,53 @@ const CustomIncentives = ({ title }: Props) => {
     <section className={styles.customIncentives}>
       {isMobile ? (
         <Carousel itemsPerPage={1} variant="slide">
-          {items.map((item, index) => (
-            <div key={index} className={styles.customIncentivesItem}>
-              <item.icon />
-              <p>{item.text}</p>
-            </div>
-          ))}
+          {items.map((item, index) => {
+            if (item.text === "Central de Atendimento") {
+              return (
+                <Link
+                  target="_blank"
+                  href={item.link}
+                  key={index}
+                  className={styles.customIncentivesItem}
+                >
+                  <item.icon />
+                  <p>{item.text}</p>
+                </Link>
+              );
+            }
+
+            return (
+              <div key={index} className={styles.customIncentivesItem}>
+                <item.icon />
+                <p>{item.text}</p>
+              </div>
+            );
+          })}
         </Carousel>
       ) : (
         <div>
-          {items.map((item, index) => (
-            <div key={index} className={styles.customIncentivesItem}>
-              <item.icon />
-              <p>{item.text}</p>
-            </div>
-          ))}
+          {items.map((item, index) => {
+            if (item.text === "Central de Atendimento") {
+              return (
+                <Link
+                  target="_blank"
+                  href={item.link}
+                  key={index}
+                  className={styles.customIncentivesItem}
+                >
+                  <item.icon />
+                  <p>{item.text}</p>
+                </Link>
+              );
+            }
+
+            return (
+              <div key={index} className={styles.customIncentivesItem}>
+                <item.icon />
+                <p>{item.text}</p>
+              </div>
+            );
+          })}
         </div>
       )}
     </section>

@@ -6,6 +6,7 @@ import CustomSortSkeleton from "../organisms/Category/CustomSortSkeleton";
 const override: SectionOverride = {
   section: "ProductGallery",
   components: {
+    __experimentalEmptyGallery: { props: { className: styles.customProductEmptyGallery } },
     __experimentalProductCard: { Component: CustomProductCard },
     SortSkeleton: { Component: CustomSortSkeleton },
     

@@ -27,7 +27,7 @@ const items = [
   },
   {
     name: "Yamaha Teclado",
-    link: "/teclas",
+    link: "/teclado-arranjador-76-teclas-usb-midi-genos-2---yamaha/p",
     img: yamahaKeysImg,
   },
 ];

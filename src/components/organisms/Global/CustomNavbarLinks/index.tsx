@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../../sass/customNavbarLinks/styles.module.scss";
 import menuIcon from "./icons/compre-por-departamento-icon.png";
 import Image from "next/image";
+import { Link } from "@faststore/ui";
 import MobileNavbarLinks from "./mobile/MobileNavbarLinks";
 import menus from "./menus";
 import useIsMobile from "../../../hooks/useIsMobile";
@@ -27,12 +28,12 @@ const CustomNavbarLinks = () => {
             onMouseEnter={() => setActiveMenu(menu.label)}
             onMouseLeave={() => setActiveMenu(null)}
           >
-            <div className={styles.menuLabelWrapper}>
+            <Link className={styles.menuLabelWrapper} href={menu.link}>
               {menu.label == "Compre por departamento" && (
                 <Image src={menuIcon} alt="Compre por departamento" />
               )}
               <span>{menu.label}</span>
-            </div>
+            </Link>
 
             {SubmenuComponent && activeMenu === menu.label && (
               <div>

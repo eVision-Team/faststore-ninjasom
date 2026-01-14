@@ -1,4 +1,5 @@
 import { buyTogetherResolver } from "./buyTogether";
+import { collectionResolver } from "./collection";
 import { productResolver } from "./product";
 import { productRefId } from "./productRefId";
 
@@ -7,6 +8,7 @@ const resolvers = {
     ...productResolver,
     ...buyTogetherResolver,
     ...productRefId,
+    ...collectionResolver,
   },
   Mutation: {},
 };

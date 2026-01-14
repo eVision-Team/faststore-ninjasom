@@ -1,0 +1,13 @@
+type Query {
+  getCollectionById(collectionId: Int): Collection
+}
+
+type DataType {
+  SkuId: Int
+  ProductId: Int
+  ProductName: String
+}
+
+type Collection {
+  Data: [DataType]
+}

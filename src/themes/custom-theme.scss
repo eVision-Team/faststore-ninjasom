@@ -767,6 +767,37 @@
     display: none;
   }
 
+  .product-description div[data-testid="fs-accordion-item"] div[data-fs-button-wrapper="true"] span:first-child,
+  .product-description div[data-testid="fs-accordion-panel"] div {
+    color: #000;
+  }
+
+  .product-description [data-fs-accordion] [data-fs-accordion-item] {
+    border-color: #000;
+  }
+
+  div[data-testid="fs-cart-sidebar"] section[data-fs-content="empty-state"] {
+    padding: 0;
+
+    p {
+      font-size: 0;
+    }
+  }
+
+  div[data-testid="fs-cart-sidebar"] section[data-fs-content="empty-state"] p::before {
+    content: 'Seu carrinho está vazio';
+    font-size: 18px;
+  }
+
+  div[data-testid="fs-cart-sidebar"] section[data-fs-content="empty-state"] div[data-fs-button-wrapper="true"] span {
+    font-size: 0;
+
+    &::before {
+      content: 'Comprar';
+      font-size: 16px;
+    }
+  }
+
   @media(max-width: 1023px) {
     .section button[aria-label="Close"] svg {
       color: #898888;

@@ -100,7 +100,7 @@ const EachStore = (props: Props) => {
               Abrir no Google Maps
             </a>
             <a href={`tel:${formattedResidential}`}>
-              Ligue para {residentialPhone}!
+              Ligue para {residentialPhone}
             </a>
           </div>
         </div>

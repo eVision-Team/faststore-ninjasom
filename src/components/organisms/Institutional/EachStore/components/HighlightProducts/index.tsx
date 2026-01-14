@@ -17,19 +17,19 @@ const HighlightProducts = () => {
             />
           </div>
           <a href="https://whts.co/ninjasom-filial" target="_blank">
-            Fale com um espacialista em Instrumentos!
+            Fale com um especialista em Instrumentos!
           </a>
         </div>
         <div className={styles.card}>
-          <h3>Instrumentos Musicais</h3>
+          <h3>Áudio Profissional</h3>
           <div className={styles.imgContainer}>
             <img
               src="https://ninjasomfaststore.vtexassets.com/assets/vtex.file-manager-graphql/images/d9080534-5862-4cf6-afd0-b87b81030c9d___51e506a2552b24846d90a355daae6dec.jpg"
-              alt="Instrumentos Musicais"
+              alt="Áudio Profissional"
             />
           </div>
           <a href="https://whts.co/ninjasom-filial" target="_blank">
-            Fale com um Especialista em Audio!
+            Fale com um especialista em Audio!
           </a>
         </div>
       </div>

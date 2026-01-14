@@ -1,6 +1,10 @@
 .customProductDetailsPrice {
     min-width: 260px;
 
+    @media (max-width: 1023px) {
+        min-width: initial;
+    }
+
     .prices {
         display: flex;
         flex-direction: column;
