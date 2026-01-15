@@ -1,12 +1,33 @@
 .homeBrands {
     max-width: var(--fs-grid-max-width);
     margin: 0 auto 48px;
-}
-
-.homeBrands>div {
     display: flex;
-    align-items: center;
-    gap: 67px;
+    overflow: hidden;
+    justify-content: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    &>div {
+        display: flex;
+        align-items: center;
+        gap: 67px;
+    }
+
+    img {
+        max-width: 175px;
+
+        &[alt="Marca 6"],
+        &[alt="Marca 10"],
+        &[alt="Marca 9"] {
+            max-width: 120px;
+        }
+
+    }
 }
 
 @media (max-width: 1023px) {

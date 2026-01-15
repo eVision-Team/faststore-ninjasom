@@ -799,6 +799,11 @@
   }
 
   @media(max-width: 1023px) {
+    header a[data-fs-navbar-logo="true"] {
+      border: none;
+      margin: 0;
+    }
+
     .section button[aria-label="Close"] svg {
       color: #898888;
     }

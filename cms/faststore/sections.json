@@ -152,7 +152,7 @@
     }
   },
   {
-    "name": "HomeBrands",
+    "name": "HomeBrandsCarousel",
     "schema": {
       "title": "Marcas",
       "type": "object",

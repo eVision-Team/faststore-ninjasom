@@ -3,7 +3,7 @@ import CustomIncentives from "./organisms/Home/CustomIncentives";
 import HomeDepartments from "./organisms/Home/HomeDepartments";
 import HomeMiddleBanner from "./organisms/Home/HomeMiddleBanner";
 import HomeDoubleBanners from "./organisms/Home/HomeDoubleBanners";
-import HomeBrands from "./organisms/Home/HomeBrands";
+import HomeBrandsCarousel from "./organisms/Home/HomeBrandsCarousel";
 import HomeTabLayout from "./organisms/Home/HomeTabLayout";
 import HomeMusicTaste from "./organisms/Home/HomeMusicTaste";
 import CustomFooter from "./organisms/Global/CustomFooter";
@@ -26,9 +26,9 @@ export default {
   HomeDepartments,
   HomeMiddleBanner,
   HomeDoubleBanners,
-  HomeBrands,
+  HomeBrandsCarousel,
   HomeTabLayout,
-  HomeMusicTaste,
+  // HomeMusicTaste,
   CustomFooter,
   AboutUs,
   OurStores,

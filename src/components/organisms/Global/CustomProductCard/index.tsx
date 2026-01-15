@@ -70,16 +70,6 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
     fetchCollectionById();
   }, []);
 
-  useEffect(() => {
-    console.log(
-      { isExclusivePrice },
-      product,
-      // data?.getCollectionById?.Data,
-      // bestSellerCollection?.getCollectionById?.Data,
-      exclusivePriceCollection
-    );
-  }, [data]);
-
   const offer = product.offers?.offers?.[0];
   const listPrice = offer?.listPrice ?? 0;
   const price = offer?.price ?? 0;
