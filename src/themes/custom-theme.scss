@@ -696,14 +696,15 @@
     }
 
     div[data-testid="fs-accordion"] {
-      ul {
-        padding-left: 30px;
-      }
-
       li {
         list-style-type: disc;
         font-size: 16px;
         line-height: 23px;
+        margin-left: 30px;
+
+        b {
+          margin-left: -30px;
+        }
       }
 
       hr {

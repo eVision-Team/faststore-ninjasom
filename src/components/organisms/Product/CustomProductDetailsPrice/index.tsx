@@ -24,6 +24,8 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
   const [getProductById, { data }] = useQuery(GET_PRODUCT_DESCRIPTION, {});
   const context = usePDP();
 
+  console.log({ context })
+
   const fetchGarantia = async () => {
     await getProductById({
       productId: context.data.product.isVariantOf.productGroupID,
