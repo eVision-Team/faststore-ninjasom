@@ -1,6 +1,7 @@
 const departments = [
   {
     name: "Áudio Profissional",
+    link: "/audio-profissional",
     items: [
       { title: "Acessórios", link: "/audio-profissional/acessorios" },
       { title: "Alto Falantes", link: "/audio-profissional/alto-falantes" },
@@ -28,6 +29,7 @@ const departments = [
   },
   {
     name: "Cordas",
+    link: "/cordas",
     items: [
       { title: "Acessórios", link: "/cordas/acessorios" },
       { title: "Amplificadores", link: "/cordas/amplificadores" },
@@ -50,6 +52,7 @@ const departments = [
   },
   {
     name: "Estúdio",
+    link: "/estudio",
     items: [
       { title: "Acessórios", link: "/estudio/acessorios" },
       { title: "Controladores", link: "/estudio/controladores" },
@@ -69,6 +72,7 @@ const departments = [
   },
   {
     name: "Home Theater",
+    link: "/home-theater",
     items: [
       { title: "Acessórios", link: "/home-theater/acessorios" },
       { title: "Amplificadores", link: "/home-theater/amplificadores" },
@@ -91,6 +95,7 @@ const departments = [
   },
   {
     name: "Percussão",
+    link: "/percussao",
     items: [
       { title: "Acessórios", link: "/percussao/acessorios" },
       { title: "Afuchê", link: "/percussao/afuche" },
@@ -132,6 +137,7 @@ const departments = [
   },
   {
     name: "Som Ambiente",
+    link: "/som-ambiente",
     items: [
       { title: "Alto falantes", link: "/som-ambiente/alto-falantes" },
       { title: "Amplificadores", link: "/som-ambiente/amplificadores" },
@@ -150,6 +156,7 @@ const departments = [
   },
   {
     name: "Sopro",
+    link: "/sopro",
     items: [
       { title: "Acessórios", link: "/sopro/acessorios" },
       { title: "Bombardinos", link: "/sopro/bombardinos" },
@@ -165,6 +172,7 @@ const departments = [
   },
   {
     name: "Teclas",
+    link: "/teclas",
     items: [
       { title: "Acessórios", link: "/teclas/acessorios" },
       { title: "Acordeons", link: "/teclas/acordeons" },

@@ -5,6 +5,7 @@ import ProductRating from "../../../molecules/ProductRating";
 //@ts-ignore
 import { useLazyQuery_unstable as useQuery } from "@faststore/core/experimental";
 import { GET_PRODUCT_REF_ID } from "./graphql/queries";
+import { Link } from "@faststore/ui";
 
 type Props = {
   title: ReactElement | ReactNode;
@@ -26,8 +27,9 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
   const product = context?.data?.product;
   const [getProductRefId, { data }] = useQuery(GET_PRODUCT_REF_ID, {});
   const seller = product?.offers?.offers?.find((offer: ProductOffer) =>
-    offer.availability.includes("InStock")
+    offer.availability.includes("InStock"),
   )?.seller?.identifier;
+  const sellerName = seller == "1" ? "Ninja Som" : seller;
 
   const fetchShortDescription = async () => {
     await getProductRefId({
@@ -46,13 +48,17 @@ const CustomProductDetailsTitle = ({ title }: Props) => {
 
       <div>
         <p>
-          Vendido por: <span>{seller}</span>
+          Vendido por: <span>{sellerName}</span>
         </p>
         <p>
-          Marca: <span>{product?.brand?.name}</span>
+          Marca:{" "}
+          <Link href={`/${product?.brand?.name}`}>
+            <span>{product?.brand?.name}</span>
+          </Link>
         </p>
         <p>
-          Referência: <span>{(data as any)?.getProductRefId?.ProductRefId}</span>
+          Referência:{" "}
+          <span>{(data as any)?.getProductRefId?.ProductRefId}</span>
         </p>
       </div>
 

@@ -9,11 +9,18 @@ const NavbarDepartments = () => {
       <div className={styles.submenu}>
         {departments.map((department, index) => (
           <div className={styles.navbarDepartment} key={index}>
-            <h4>{department.name}</h4>
+            <h4>
+              <Link href={department.link}>{department.name}</Link>
+            </h4>
             <ul>
               {department.items.map((item, itemIndex) => (
                 <li key={itemIndex}>
-                  <Link href={item.link} className={styles.navbarDepartmentItem}>{item.title}</Link>
+                  <Link
+                    href={item.link}
+                    className={styles.navbarDepartmentItem}
+                  >
+                    {item.title}
+                  </Link>
                 </li>
               ))}
             </ul>

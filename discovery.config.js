@@ -1,23 +1,22 @@
-
 module.exports = {
   seo: {
-  "title": "FastStore",
-  "description": "A fast and performant store framework",
-  "titleTemplate": "%s | FastStore",
-  "author": "FastStore"
-},
-
+    title: "Ninja Som - Encontre aqui Equipamentos de Som Profissional",
+    description:
+      "Encontre aqui Equipamentos de Som Profissional com as melhores ofertas. Som Profissional com preço baixo e entrega rápida. Instrumentos Ninja Som.",
+    titleTemplate: "%s | Ninja Som",
+    author: "eVision",
+  },
   // Theming
-  theme: 'custom-theme',
+  theme: "custom-theme",
 
   // Ecommerce Platform
-  platform: 'vtex',
+  platform: "vtex",
 
   // Platform specific configs for API
   api: {
     storeId: "ninjasomfaststore",
-    workspace: 'master',
-    environment: 'vtexcommercestable',
+    workspace: "master",
+    environment: "vtexcommercestable",
     hideUnavailableItems: true,
     incrementAddress: false,
   },
@@ -39,7 +38,7 @@ module.exports = {
   },
 
   cart: {
-    id: '',
+    id: "",
     items: [],
     messages: [],
     shouldSplitItem: true,
@@ -53,7 +52,7 @@ module.exports = {
   accountUrl: "https://secure.vtexfaststore.com/api/io/account",
 
   previewRedirects: {
-    home: '/',
+    home: "/",
     plp: "/home%20theater",
     search: "/s?q=Telefunken",
     pdp: "/soundbar---subwoofer-wireless-polaris-900---telefunke/p",
@@ -61,9 +60,9 @@ module.exports = {
 
   // Lighthouse CI
   lighthouse: {
-    server: process.env.BASE_SITE_URL || 'http://localhost:3000',
+    server: process.env.BASE_SITE_URL || "http://localhost:3000",
     pages: {
-      home: '/',
+      home: "/",
       pdp: "/soundbar---subwoofer-wireless-polaris-900---telefunke/p",
       collection: "/home%20theater",
     },
@@ -72,13 +71,14 @@ module.exports = {
   // E2E CI
   cypress: {
     pages: {
-      home: '/',
+      home: "/",
       pdp: "/soundbar---subwoofer-wireless-polaris-900---telefunke/p",
       collection: "/home%20theater",
-      collection_filtered: "/home%20theater/?category-1=home%20theater&brand=Telefunken&facets=category-1%2Cbrand%27",
+      collection_filtered:
+        "/home%20theater/?category-1=home%20theater&brand=Telefunken&facets=category-1%2Cbrand%27",
       search: "/s?q=Telefunken",
     },
-    browser: 'electron',
+    browser: "electron",
   },
 
   analytics: {
@@ -96,4 +96,4 @@ module.exports = {
       "https://ninjasomfaststore.myvtex.com/cms-releases/webhook-releases",
     ],
   },
-}
+};
