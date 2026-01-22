@@ -3,6 +3,7 @@ import { collectionResolver } from "./collection";
 import { productResolver } from "./product";
 import { productRefId } from "./productRefId";
 import { seoResolver } from "./seo";
+import { stockNotificationResolver } from "./stockNotification";
 
 const resolvers = {
   Query: {
@@ -11,7 +12,9 @@ const resolvers = {
     ...productRefId,
     ...collectionResolver,
   },
-  Mutation: {},
+  Mutation: {
+    ...stockNotificationResolver,
+  },
   StoreProduct: {
     ...seoResolver.StoreProduct,
   },

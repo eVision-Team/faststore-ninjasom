@@ -1,0 +1,8 @@
+type Mutation {
+  subscribeBackInStock(
+    name: String!
+    email: String!
+    skuId: String!
+    productId: String!
+  ): Boolean
+}

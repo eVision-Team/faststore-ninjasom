@@ -4,6 +4,7 @@ import CustomProductDetailsPrice from "../organisms/Product/CustomProductDetails
 import CustomProductDetailsTitle from "../organisms/Product/CustomProductDetailsTitle";
 import CustomProdutDetailsDescription from "../organisms/Product/CustomProductDetailsDescription";
 import CustomImageGallery from "../organisms/Product/CustomImageGallery";
+import CustomNotAvailableButton from "../organisms/Product/CustomNotAvailableButton";
 
 const override: SectionOverride = {
   section: "ProductDetails",
@@ -15,6 +16,7 @@ const override: SectionOverride = {
     },
     ImageGalleryViewer: { Component: () => null },
     ImageGallery: { Component: CustomImageGallery },
+    __experimentalNotAvailableButton: { Component: CustomNotAvailableButton },
   },
 };
 

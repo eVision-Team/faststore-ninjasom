@@ -17,7 +17,7 @@ module.exports = {
     storeId: "ninjasomfaststore",
     workspace: "master",
     environment: "vtexcommercestable",
-    hideUnavailableItems: true,
+    hideUnavailableItems: false,
     incrementAddress: false,
   },
 
