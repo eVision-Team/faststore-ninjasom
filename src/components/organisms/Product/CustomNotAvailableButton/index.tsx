@@ -17,12 +17,12 @@ const CustomNotAvailableButton = () => {
     const [error, setError] = useState('')
 
     const skuId = useMemo(() => {
-        const sku = product?.sku ?? product?.itemId
+        const sku = product?.sku
         return sku ? String(sku) : ''
     }, [product])
 
     const productId = useMemo(() => {
-        const id = product?.isVariantOf?.productId ?? product?.isVariantOf?.productGroupID
+        const id = product?.id
         return id ? String(id) : ''
     }, [product])
 
