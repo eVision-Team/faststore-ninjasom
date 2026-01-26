@@ -10,11 +10,11 @@ export default function ProductRating({ productId }: { productId: string }) {
       const res = await fetch(
         `https://ninjasomfaststore.myvtex.com/reviews-and-ratings/api/rating/${productId}`,
         {
-          headers: {
-            "Content-Type": "application/json",
-            "X-VTEX-API-AppKey": process.env.NEXT_PUBLIC_VTEX_APP_KEY!,
-            "X-VTEX-API-AppToken": process.env.NEXT_PUBLIC_VTEX_APP_TOKEN!,
-          },
+          // headers: {
+          //   "Content-Type": "application/json",
+          //   "X-VTEX-API-AppKey": process.env.NEXT_PUBLIC_VTEX_APP_KEY!,
+          //   "X-VTEX-API-AppToken": process.env.NEXT_PUBLIC_VTEX_APP_TOKEN!,
+          // },
         }
       );
       const data = await res.json();
