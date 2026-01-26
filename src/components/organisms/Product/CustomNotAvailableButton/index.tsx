@@ -9,7 +9,7 @@ import styles from '../../../../sass/customNotAvailableButton/styles.module.scss
 const CustomNotAvailableButton = () => {
     const context = usePDP()
     const product = context?.data?.product
-    const [subscribe, { loading }] = useQuery(SUBSCRIBE_BACK_IN_STOCK, {})
+  const [subscribe, { isValidating }] = useQuery(SUBSCRIBE_BACK_IN_STOCK, {})
 
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
@@ -74,7 +74,7 @@ const CustomNotAvailableButton = () => {
                         placeholder="Nome"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
-                        disabled={loading}
+          disabled={isValidating}
                         required
                     />
                     <label className={styles.label} htmlFor="back-in-stock-email">Email</label>
@@ -85,11 +85,11 @@ const CustomNotAvailableButton = () => {
                         placeholder="E-mail"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
-                        disabled={loading}
+          disabled={isValidating}
                         required
                     />
-                    <button className={styles.button} type="submit" disabled={loading}>
-                        {loading ? 'Enviando...' : 'Enviar'}
+        <button className={styles.button} type="submit" disabled={isValidating}>
+          {isValidating ? 'Enviando...' : 'Enviar'}
                     </button>
                 </div>
                 {error && <p className={styles.message}>{error}</p>}

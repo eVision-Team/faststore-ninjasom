@@ -16,7 +16,7 @@ import PaymentMethods from "./organisms/Institutional/PaymentMethods";
 import PrivacyPolicy from "./organisms/Institutional/PrivacyPolicy";
 import ExchangesAndReturns from "./organisms/Institutional/ExchangesAndReturns";
 import DeadlineAndDelivery from "./organisms/Institutional/DeadlineAndDelivery";
-import ProductRating from "./molecules/ProductRating";
+// import ProductRating from "./molecules/ProductRating";
 import CategorySEO from "./organisms/Category/CategorySEO";
 import BuyTogether from "./organisms/Product/BuyTogether";
 
@@ -39,7 +39,7 @@ export default {
   PrivacyPolicy,
   ExchangesAndReturns,
   DeadlineAndDelivery,
-  ProductRating,
+  // ProductRating,
   CategorySEO,
   BuyTogether,
 };
