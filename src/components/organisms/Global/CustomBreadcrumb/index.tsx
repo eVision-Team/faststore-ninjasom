@@ -19,6 +19,8 @@ const CustomBreadcrumb = ({ breadcrumbList, icon }: BreadcrumbProps) => {
   if (!breadcrumbList || breadcrumbList.length === 0) return null;
 
   const lastIndex = breadcrumbList.length - 1;
+  const formatLabel = (label: string) =>
+    label === "All Products" ? "Todos os produtos" : label;
 
   return (
     <nav aria-label="breadcrumb" className={styles.breadcrumbContainer}>
@@ -36,9 +38,11 @@ const CustomBreadcrumb = ({ breadcrumbList, icon }: BreadcrumbProps) => {
         {breadcrumbList.map((crumb, index) => (
           <li key={crumb.position} className={styles.breadcrumbItem}>
             {index !== lastIndex ? (
-              <Link href={crumb.item}>{crumb.name}</Link>
+              <Link href={crumb.item}>{formatLabel(crumb.name)}</Link>
             ) : (
-              <span className={styles.breadcrumbCurrent}>{crumb.name}</span>
+              <span className={styles.breadcrumbCurrent}>
+                {formatLabel(crumb.name)}
+              </span>
             )}
 
             {index !== lastIndex && (

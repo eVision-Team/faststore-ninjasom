@@ -810,6 +810,25 @@
     }
   }
 
+  a[href="/technology"] {
+    display: none;
+  }
+
+  .customHeroSlider {
+    ul {
+      padding: 0;
+    }
+
+    li {
+      margin: 0 !important;
+    }
+
+    div[data-testid="fs-carousel-bullets"] {
+      position: absolute;
+      bottom: 25px;
+    }
+  }
+
   @media(max-width: 1023px) {
     header a[data-fs-navbar-logo="true"] {
       border: none;

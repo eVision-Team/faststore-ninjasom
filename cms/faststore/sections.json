@@ -1,26 +1,35 @@
-[
-  {
+[{
     "name": "CustomHero",
     "schema": {
       "title": "Banner principal",
       "type": "object",
       "properties": {
-        "link": {
-          "title": "Link",
-          "type": "string"
-        },
-        "image": {
-          "title": "Banner principal",
-          "type": "string",
-          "widget": {
-            "ui:widget": "image-uploader"
-          }
-        },
-        "imageMobile": {
-          "title": "Banner principal - Mobile",
-          "type": "string",
-          "widget": {
-            "ui:widget": "image-uploader"
+        "banners": {
+          "title": "Banners (slider)",
+          "type": "array",
+          "items": {
+            "title": "Banner",
+            "type": "object",
+            "properties": {
+              "link": {
+                "title": "Link",
+                "type": "string"
+              },
+              "image": {
+                "title": "Banner principal",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "imageMobile": {
+                "title": "Banner principal - Mobile",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              }
+            }
           }
         }
       }

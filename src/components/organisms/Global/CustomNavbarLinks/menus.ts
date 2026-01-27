@@ -8,6 +8,7 @@ const menus = [
   {
     label: "Instrumentos",
     component: require("./NavbarInstruments").default,
+    link: "/s?facets=productClusterIds&productClusterIds=162",
   },
   { label: "Promoções", styleKey: "promocoes", link: "/promocoes" },
   { label: "Nossas Lojas", styleKey: "nossasLojas", link: "/nossas-lojas" },
