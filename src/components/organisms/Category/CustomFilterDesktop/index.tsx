@@ -52,16 +52,18 @@ const translateLabel = (label?: string | null) => {
 
   const normalized = trimmed.toLowerCase()
   switch (normalized) {
+    case 'productclusternames':
+      return 'Coleção'
     case 'category':
       return 'Categoria'
     case 'subcategory':
-      return 'Subcategoria'
+      return 'Subcategoria' 
     case 'price':
       return 'Preço'
     case 'brand':
       return 'Marca'
     case 'color':
-      return 'Cor'
+      return 'Cor' 
     case 'type':
       return 'Tipo'
     case 'filters':

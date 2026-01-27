@@ -7,8 +7,8 @@ const WhatsappIcon = () => {
       shape-rendering="geometricPrecision"
       text-rendering="geometricPrecision"
       image-rendering="optimizeQuality"
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       viewBox="0 0 509 511.514"
       style={{ width: "16px" }}
     >

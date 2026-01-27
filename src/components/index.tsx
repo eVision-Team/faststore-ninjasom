@@ -28,7 +28,7 @@ export default {
   HomeDoubleBanners,
   HomeBrandsCarousel,
   HomeTabLayout,
-  // HomeMusicTaste,
+  HomeMusicTaste,
   CustomFooter,
   AboutUs,
   OurStores,
