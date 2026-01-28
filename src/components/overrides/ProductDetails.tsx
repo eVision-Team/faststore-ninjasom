@@ -5,10 +5,12 @@ import CustomProductDetailsTitle from "../organisms/Product/CustomProductDetails
 import CustomProdutDetailsDescription from "../organisms/Product/CustomProductDetailsDescription";
 import CustomImageGallery from "../organisms/Product/CustomImageGallery";
 import CustomNotAvailableButton from "../organisms/Product/CustomNotAvailableButton";
+import CustomShippingSimulator from "../organisms/Product/CustomShippingSimulator";
 
 const override: SectionOverride = {
   section: "ProductDetails",
   components: {
+    __experimentalShippingSimulation: { Component: CustomShippingSimulator },
     ProductPrice: { Component: CustomProductDetailsPrice },
     ProductTitle: { Component: CustomProductDetailsTitle },
     __experimentalProductDescription: {
