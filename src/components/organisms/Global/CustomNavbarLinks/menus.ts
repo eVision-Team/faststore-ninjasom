@@ -4,7 +4,7 @@ const menus = [
     component: require("./NavbarDepartments").default,
     styleKey: "comprePorDepartamento",
   },
-  { label: "Áudio", component: require("./NavbarAudio").default, link: "/audio-profissional" },
+  { label: "Áudio", component: require("./NavbarAudio").default, link: "/s?facets=productClusterIds&productClusterIds=163" },
   {
     label: "Instrumentos",
     component: require("./NavbarInstruments").default,

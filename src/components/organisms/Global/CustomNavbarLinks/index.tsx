@@ -20,6 +20,20 @@ const CustomNavbarLinks = () => {
       return;
     }
 
+    /**
+     * 🚫 LIMPEZA DE URL TOTALMENTE DESATIVADA
+     *
+     * Todo o código abaixo era responsável por:
+     * - remover parâmetros da URL
+     * - forçar router.replace
+     * - limpar facets, productClusterIds, sort, etc
+     * - rodar em interval (scrubber agressivo)
+     *
+     * Para manter o componente funcionando 100% sem side effects,
+     * a lógica foi apenas comentada.
+     */
+
+    /*
     const sanitizeUrl = () => {
       const url = new URL(window.location.href);
       const isSearchPage = url.pathname === "/s";
@@ -64,6 +78,8 @@ const CustomNavbarLinks = () => {
       window.clearInterval(interval);
       window.clearTimeout(timeout);
     };
+    */
+
   }, [router.asPath, router.isReady, router.pathname]);
 
   if (isMobile) {
@@ -84,7 +100,7 @@ const CustomNavbarLinks = () => {
             onMouseLeave={() => setActiveMenu(null)}
           >
             <Link className={styles.menuLabelWrapper} href={menu.link}>
-              {menu.label == "Compre por departamento" && (
+              {menu.label === "Compre por departamento" && (
                 <Image src={menuIcon} alt="Compre por departamento" />
               )}
               <span>{menu.label}</span>
