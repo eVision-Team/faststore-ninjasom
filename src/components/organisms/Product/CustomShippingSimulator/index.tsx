@@ -1,5 +1,5 @@
 import type { ShippingSimulationProps as UIShippingSimulationProps } from '@faststore/ui'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { ShippingSimulation as UIShippingSimulation } from '@faststore/ui'
 import { useShippingSimulation_unstable } from '@faststore/core/experimental'
@@ -129,6 +129,27 @@ const CustomShippingSimulator = ({
     return formatter ? formatter(value, variant) : value.toString()
   }
 
+  // ============================
+  // useEffect para adicionar a classe "free-freight"
+  // ============================
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const tds = document.querySelectorAll<HTMLTableCellElement>(
+        'td[data-fs-table-cell-align="right"]'
+      )
+      tds.forEach((td) => {
+        const text = td.textContent?.trim()
+        if (text === '0' || text === '0,00') {
+          td.classList.add('free-freight')
+        } else {
+          td.classList.remove('free-freight')
+        }
+      })
+    }, 200) // verifica a cada 200ms
+
+    return () => clearInterval(interval)
+  }, []) // sem dependências, só roda uma vez no mount
+
   return (
     <UIShippingSimulation
       formatter={formatterWithFallback}
@@ -156,8 +177,7 @@ const CustomShippingSimulator = ({
       idkPostalCodeLinkProps={{
         ...idkPostalCodeLinkProps,
         children:
-          idkPostalCodeLinkProps?.children ??
-          'Não sei meu CEP',
+          idkPostalCodeLinkProps?.children ?? 'Não sei meu CEP',
         target: '_blank',
         rel: 'noreferrer',
       }}

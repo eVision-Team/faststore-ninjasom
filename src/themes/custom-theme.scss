@@ -678,9 +678,18 @@
   }
 
   section[data-testid="fs-shipping-simulation"] {
+    button[aria-label="Clear Field"] {
+      min-width: 100px !important;
+    }
+
     div[data-fs-button-wrapper="true"] {
+
+
       span {
         font-size: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
 
         &::before {
           content: 'Aplicar';
@@ -838,6 +847,27 @@
     div[data-testid="fs-carousel-bullets"] {
       position: absolute;
       bottom: 25px;
+    }
+  }
+
+  .custom-shipping-simulation {
+    button {
+      min-width: 100px;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .free-freight {
+    font-size: 0;
+
+    &::before {
+      content: 'Grátis';
+      font-size: 14px;
     }
   }
 
