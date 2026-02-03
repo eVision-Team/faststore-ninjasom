@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link } from "@faststore/ui";
+import { Button, Link } from "@faststore/ui";
 import Image from "next/image";
 import styles from "../../../../sass/customProductCard/styles.module.scss";
 import formatPrice from "../../../../utils/formatPrice";
@@ -31,19 +31,19 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
   const [getCollectionById, { data }] = useQuery(GET_COLLECTION_PRODUCTS, {});
   const [bestSellerCollection, setBestSellerCollection] = useState([] as any);
   const [exclusivePriceCollection, setExclusivePriceCollection] = useState(
-    [] as any
+    [] as any,
   );
 
   const fetchCollectionById = async () => {
     setBestSellerCollection(
       await getCollectionById({
         collectionId: 159,
-      })
+      }),
     );
     setExclusivePriceCollection(
       await getCollectionById({
         collectionId: 160,
-      })
+      }),
     );
   };
 
@@ -51,7 +51,7 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
     if (!bestSellerCollection?.getCollectionById?.Data) return false;
 
     return bestSellerCollection?.getCollectionById?.Data?.some(
-      (item: CollectionProduct) => item.SkuId == product.sku
+      (item: CollectionProduct) => item.SkuId == product.sku,
     );
   }, [data, product.sku]);
 
@@ -62,7 +62,7 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
       (item: CollectionProduct) =>
         item.SkuId == product.sku ||
         item.ProductId == product.id ||
-        item.ProductName == product.name
+        item.ProductName == product.name,
     );
   }, [data, product.sku]);
 
@@ -94,10 +94,13 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
   const productName = product.name;
   const productLink = `/${product.slug}/p`;
   const sku = product.sku;
+  const productStock = product?.offers?.offers[0]?.quantity;
 
   const cleanSlug = product.slug.endsWith(`-${sku}`)
     ? product.slug.slice(0, product.slug.length - `-${sku}`.length)
     : product.slug;
+
+  console.log({ product });
 
   return (
     <Link href={`/${cleanSlug}/p`} className={styles.card}>
@@ -142,20 +145,28 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
       <div className={styles.info}>
         <h3 className={styles.title}>{productName}</h3>
 
-        <div className={styles.prices}>
-          {listPrice > price && (
-            <span className={styles.listPrice}>{formatPrice(listPrice)}</span>
-          )}
-          <span className={styles.price}>{formatPrice(price)}</span>
-          {discount > 0 && <div className={styles.pixMessage}>À vista</div>}
-        </div>
+        {productStock > 0 ? (
+          <div className={styles.priceContainer}>
+            <div className={styles.prices}>
+              {listPrice > price && (
+                <span className={styles.listPrice}>
+                  {formatPrice(listPrice)}
+                </span>
+              )}
+              <span className={styles.price}>{formatPrice(price)}</span>
+              {discount > 0 && <div className={styles.pixMessage}>À vista</div>}
+            </div>
 
-        <div className={styles.installments}>
-          ou até{" "}
-          <strong>
-            {installments.count}x de {formatPrice(installments.value)}
-          </strong>
-        </div>
+            <div className={styles.installments}>
+              ou até{" "}
+              <strong>
+                {installments.count}x de {formatPrice(installments.value)}
+              </strong>
+            </div>
+          </div>
+        ) : (
+          <button className={styles.consultBtn}>Sob consulta</button>
+        )}
       </div>
     </Link>
   );
