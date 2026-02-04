@@ -13,7 +13,7 @@
   "dependencies": {
     "@faststore/cli": "3.77.2",
     "@faststore/core": "^3.95.0",
-    "@faststore/sdk": "^3.95.0",
+    "@faststore/sdk": "^3.97.0",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
     "next": "^13.5.9",

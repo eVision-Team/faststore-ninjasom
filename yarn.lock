@@ -563,10 +563,20 @@
   resolved "https://registry.yarnpkg.com/@faststore/lighthouse/-/lighthouse-3.95.0.tgz#34fac418d63c9fe53475b1d7f952ccdbefabef15"
   integrity sha512-Z2Ct7xuq8M5PxxF02fKH4KF8MGE3Ql0iB1r4M1q2U4sZDgtagquM4+95krT16gJB5vVIqW8GaXCzCE6aMs6gKw==
 
-"@faststore/sdk@3.95.0", "@faststore/sdk@^3.95.0":
+"@faststore/sdk@3.95.0":
   version "3.95.0"
   resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-3.95.0.tgz#ec210393aa974c908de9e6733ac32db3ed0ddbb7"
   integrity sha512-/m6sQJ0jIEsGb1UNdwzuYJfFCpTdLnvpWLOe9lwSLj4K4gMWIs4q6FcWps+5c3NtzYYbwMXMjc1XxJ5XjrYeRg==
+  dependencies:
+    "@types/react" "^18.2.42"
+    fast-deep-equal "^3.1.3"
+    idb-keyval "^5.1.3"
+    zustand "^5.0.5"
+
+"@faststore/sdk@^3.97.0":
+  version "3.97.0"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-3.97.0.tgz#0a9fd57c2d7a934b7adb37a455ad92f97a648f3c"
+  integrity sha512-ABCUyw26lWrYN1GTW3ievwsGtKnQEf9hE2JTH5HZ7/6OUNww6bl9lgqeQ9EgJHV0dP1XLEeVY+wKDAxMyYZHpg==
   dependencies:
     "@types/react" "^18.2.42"
     fast-deep-equal "^3.1.3"
