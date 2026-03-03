@@ -52,11 +52,11 @@ module.exports = {
   //accountUrl: "https://secure.vtexfaststore.com/api/io/account",
 
 
- storeUrl: "https://ninjasom.com.br",
+ storeUrl: "https://www.ninjasom.com.br",
   secureSubdomain: "https://secure.vtexfaststore.com/",
-  checkoutUrl: "https://ninjasom.com.br/checkout",
-  loginUrl: "https://ninjasom.com.br/api/io/login",
-  accountUrl: "https://ninjasom.com.br/api/io/account",
+  checkoutUrl: "https://www.ninjasom.com.br/checkout",
+  loginUrl: "https://www.ninjasom.com.br/api/io/login",
+  accountUrl: "https://www.ninjasom.com.br/api/io/account",
 
   previewRedirects: {
     home: "/",
