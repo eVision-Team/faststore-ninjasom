@@ -45,11 +45,18 @@ module.exports = {
   },
 
   // Production URLs
-  storeUrl: "https://ninjasomfaststore.vtex.app",
+  //storeUrl: "https://ninjasomfaststore.vtex.app",
+  //secureSubdomain: "https://secure.vtexfaststore.com/",
+  //checkoutUrl: "https://secure.vtexfaststore.com/checkout",
+  //loginUrl: "https://secure.vtexfaststore.com/api/io/login",
+  //accountUrl: "https://secure.vtexfaststore.com/api/io/account",
+
+
+ storeUrl: "https://ninjasom.com.br",
   secureSubdomain: "https://secure.vtexfaststore.com/",
-  checkoutUrl: "https://secure.vtexfaststore.com/checkout",
-  loginUrl: "https://secure.vtexfaststore.com/api/io/login",
-  accountUrl: "https://secure.vtexfaststore.com/api/io/account",
+  checkoutUrl: "https://ninjasom.com.br/checkout",
+  loginUrl: "https://ninjasom.com.br/api/io/login",
+  accountUrl: "https://ninjasom.com.br/api/io/account",
 
   previewRedirects: {
     home: "/",
