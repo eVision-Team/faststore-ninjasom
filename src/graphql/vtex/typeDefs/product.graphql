@@ -2,8 +2,23 @@ type Query {
   getProductById(productId: String): [Product]
 }
 
-type Product {
-  Id: Int
+type Specification {
   Name: String
   Value: [String]
+}
+
+type Installment {
+  value: Float
+  numberOfInstallments: Int
+  interestRate: Float
+}
+
+type Product {
+  Id: String
+  Name: String
+  Value: [Specification]
+  listPrice: Float
+  price: Float
+  sellingPrice: Float
+  installments: [Installment]
 }

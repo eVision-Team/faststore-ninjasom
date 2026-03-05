@@ -21,10 +21,13 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
   listPrice,
   value,
 }) => {
-  const [getProductById, { data }] = useQuery(GET_PRODUCT_DESCRIPTION, {});
+  const [getProductById, { data, isValidating }] = useQuery(
+    GET_PRODUCT_DESCRIPTION,
+    {},
+  );
   const context = usePDP();
 
-  console.log({ context })
+  console.log(`context`, { context });
 
   const fetchGarantia = async () => {
     await getProductById({
@@ -37,9 +40,9 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
     fetchGarantia();
   }, []);
 
-  const garantia = (data as any)?.getProductById?.find(
-    (item: any) => item.Name === "Descrição Curta na Página de Produto"
-  )?.Value[0];
+  // const garantia = (data as any)?.getProductById?.find(
+  //   (item: any) => item.Name === "Descrição Curta na Página de Produto",
+  // )?.Value[0];
   const hasDiscount = listPrice > value;
 
   const getInstallments = (value: number): Installments => {
@@ -50,7 +53,16 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
     };
   };
 
-  const installments = getInstallments(listPrice || value);
+  const customProduct = (data as any)?.getProductById?.[0];
+  const garantia = customProduct?.Value?.find(
+    (item: any) => item.Name === "Descrição Curta na Página de Produto",
+  )?.Value?.[0];
+  const basePriceForInstallments =
+    customProduct?.sellingPrice || listPrice || value;
+  const installments = getInstallments(basePriceForInstallments);
+
+  //const installments = getInstallments(listPrice || value);
+
   const offer = context.data.product.offers?.offers?.[0];
   const price = offer?.price ?? 0;
 
@@ -81,13 +93,21 @@ const CustomProductDetailsPrice: React.FC<CustomProductDetailsPriceProps> = ({
       )}
       <div className={styles.installments}>
         ou{" "}
-        <strong>
-          {installments.count}x de {formatPrice(installments.value)}
-        </strong>
+        {isValidating || !data ? (
+          <span className={`${styles.skeleton} ${styles.skeletonParcela}`} />
+        ) : (
+          <strong>
+            {installments.count}x de {formatPrice(installments.value)}
+          </strong>
+        )}
       </div>
       {garantia && (
         <div className={styles.garantia}>
-          <RenderRichText content={garantia} />
+          {isValidating || !data ? (
+            <div className={`${styles.skeleton} ${styles.skeletonGarantia}`} />
+          ) : (
+            garantia && <RenderRichText content={garantia} />
+          )}
         </div>
       )}
     </div>
