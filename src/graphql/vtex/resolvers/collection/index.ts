@@ -8,8 +8,8 @@ const collectionCache: Record<number, { timestamp: number; data: any[] }> = {};
 const CACHE_TTL = 5 * 60 * 1000;
 
 const vtexHeaders = () => ({
-  "X-VTEX-API-AppKey": process.env.VTEX_APP_KEY ?? "",
-  "X-VTEX-API-AppToken": process.env.VTEX_APP_TOKEN ?? "",
+  "X-VTEX-API-AppKey": "vtexappkey-ninjasomfaststore-CUGTSB",
+  "X-VTEX-API-AppToken": "ROCJMDGMSIXGJQEAAKWJUKEMPCUYTKDYFGGPVOQPUYMUDXSESUVVRFWGCKODUPUBYROXRUDCVIKSBSAULVBWTEDUSEVTTCFRBNEMVBQNNXCZKDEISQSUSZCIXBYIJJWQ",
   "Content-Type": "application/json",
 });
 
