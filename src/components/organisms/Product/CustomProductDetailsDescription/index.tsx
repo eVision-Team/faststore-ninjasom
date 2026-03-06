@@ -31,27 +31,23 @@ const CustomProductDetailsDescription = (props: any) => {
     await getProductById({
       productId: context.data.product.isVariantOf.productGroupID,
     });
-  };
+  }; // Sempre que "data" mudar, registra no console
 
-  // Sempre que "data" mudar, registra no console
   useEffect(() => {
     fetchShortDescription();
   }, []);
 
   const shortDescriptionAccordions = () => {
-    if (!(data as any)?.getProductById) return null;
+    if (!(data as any)?.getProductById) return null; // Filtrar apenas os itens desejados
 
-    // Filtrar apenas os itens desejados
     const itensDesejados = (data as any).getProductById.filter((item: any) =>
-      ["Tipo", "Carateristicas:"].includes(item.Name)
+      ["Tipo", "Carateristicas:"].includes(item.Name),
     );
 
-    if (itensDesejados.length === 0) return null;
+    if (itensDesejados.length === 0) return null; // ORDEM DESEJADA
 
-    // ORDEM DESEJADA
-    const ordem = ["Tipo", "Carateristicas:"];
+    const ordem = ["Tipo", "Carateristicas:"]; // Ordenar manualmente
 
-    // Ordenar manualmente
     itensDesejados.sort((a: any, b: any) => {
       return ordem.indexOf(a.Name) - ordem.indexOf(b.Name);
     });
@@ -79,7 +75,6 @@ const CustomProductDetailsDescription = (props: any) => {
             <RenderRichText content={props.descriptionData[0].content} />
           </AccordionPanel>
         </AccordionItem>
-
         {shortDescriptionAccordions()}
       </Accordion>
     </section>
