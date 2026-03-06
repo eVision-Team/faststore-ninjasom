@@ -1,38 +1,41 @@
 import { BASE_URL } from "../../../../constants";
 import pLimit from "p-limit";
 
-// Configurações
-const BATCH_LIMIT = 5; // quantas requisições paralelas por vez
-const PAGE_SIZE = 50;  // tamanho da página da VTEX
+const BATCH_LIMIT = 5;
+const PAGE_SIZE = 50;
 
-// Cache simples em memória (opcional)
 const collectionCache: Record<number, { timestamp: number; data: any[] }> = {};
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutos
+const CACHE_TTL = 5 * 60 * 1000;
 
-// Função para buscar uma página específica
-const fetchCollectionPage = async (collectionId: number, page: number) => {
+const vtexHeaders = () => ({
+  "X-VTEX-API-AppKey": process.env.VTEX_APP_KEY ?? "",
+  "X-VTEX-API-AppToken": process.env.VTEX_APP_TOKEN ?? "",
+  "Content-Type": "application/json",
+});
+
+// Retorna { data, totalPages } em uma única requisição para evitar double fetch.
+const fetchCollectionPage = async (
+  collectionId: number,
+  page: number
+): Promise<{ data: any[]; totalPages: number }> => {
   const url = `${BASE_URL}/api/catalog/pvt/collection/${collectionId}/products?Page=${page}&Size=${PAGE_SIZE}`;
 
   try {
-    const response = await fetch(url, {
-      headers: {
-        "X-VTEX-API-AppKey": "vtexappkey-ninjasomfaststore-CUGTSB",
-        "X-VTEX-API-AppToken":
-          "ROCJMDGMSIXGJQEAAKWJUKEMPCUYTKDYFGGPVOQPUYMUDXSESUVVRFWGCKODUPUBYROXRUDCVIKSBSAULVBWTEDUSEVTTCFRBNEMVBQNNXCZKDEISQSUSZCIXBYIJJWQ",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(url, { headers: vtexHeaders() });
 
     if (!response.ok) {
       console.error(`Erro na página ${page}:`, response.status, await response.text());
-      return [];
+      return { data: [], totalPages: 1 };
     }
 
     const result = await response.json();
-    return result.Data || [];
+    return {
+      data: result.Data ?? [],
+      totalPages: result.TotalPage ?? 1,
+    };
   } catch (err) {
     console.error(`Erro na página ${page}:`, err);
-    return [];
+    return { data: [], totalPages: 1 };
   }
 };
 
@@ -42,59 +45,33 @@ export const collectionResolver = {
     { collectionId }: { collectionId: number }
   ) => {
     try {
-      // Verifica cache
       const cached = collectionCache[collectionId];
       if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
         return { Id: collectionId, Data: cached.data };
       }
 
-      // Faz a primeira requisição para obter o total de páginas
-      const firstPageData = await fetchCollectionPage(collectionId, 1);
-      const firstPageResponse = await fetch(
-        `${BASE_URL}/api/catalog/pvt/collection/${collectionId}/products?Page=1&Size=${PAGE_SIZE}`,
-        {
-          headers: {
-            "X-VTEX-API-AppKey": "vtexappkey-ninjasomfaststore-CUGTSB",
-            "X-VTEX-API-AppToken":
-              "ROCJMDGMSIXGJQEAAKWJUKEMPCUYTKDYFGGPVOQPUYMUDXSESUVVRFWGCKODUPUBYROXRUDCVIKSBSAULVBWTEDUSEVTTCFRBNEMVBQNNXCZKDEISQSUSZCIXBYIJJWQ",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const firstResult = await firstPageResponse.json();
-      const totalPages = firstResult.TotalPage || 1;
-
+      // Primeira página traz também o totalPages — sem double fetch.
+      const { data: firstPageData, totalPages } = await fetchCollectionPage(collectionId, 1);
       let allProducts = [...firstPageData];
 
       if (totalPages > 1) {
         const limit = pLimit(BATCH_LIMIT);
         const requests = [];
 
-        // Cria tarefas para cada página, já que a primeira já foi carregada
         for (let page = 2; page <= totalPages; page++) {
-          requests.push(limit(() => fetchCollectionPage(collectionId, page)));
+          requests.push(limit(() => fetchCollectionPage(collectionId, page).then((r) => r.data)));
         }
 
         const results = await Promise.all(requests);
-
-        // Junta todos os produtos
         allProducts = allProducts.concat(...results);
       }
 
-      // Armazena no cache
       collectionCache[collectionId] = { timestamp: Date.now(), data: allProducts };
 
-      return {
-        Id: collectionId,
-        Data: allProducts,
-      };
+      return { Id: collectionId, Data: allProducts };
     } catch (err) {
       console.error("Erro ao buscar coleção:", err);
-      return {
-        Id: collectionId,
-        Data: [],
-      };
+      return { Id: collectionId, Data: [] };
     }
   },
 };

@@ -1,57 +1,20 @@
-//import { BASE_URL } from "../../../../constants";
-
-// export const productResolver = {
-//   getProductById: async (_: any, { productId }: { productId: string }) => {
-//     const url = `${BASE_URL}/api/catalog_system/pvt/products/${productId}/specification`;
-
-//     try {
-//       const response = await fetch(url, {
-//         headers: {
-//           "X-VTEX-API-AppKey": "vtexappkey-ninjasomfaststore-CUGTSB",
-//           "X-VTEX-API-AppToken":
-//             "ROCJMDGMSIXGJQEAAKWJUKEMPCUYTKDYFGGPVOQPUYMUDXSESUVVRFWGCKODUPUBYROXRUDCVIKSBSAULVBWTEDUSEVTTCFRBNEMVBQNNXCZKDEISQSUSZCIXBYIJJWQ",
-//           "Content-Type": "application/json",
-//         },
-//       });
-
-//       if (!response.ok) {
-//         console.error(
-//           "VTEX API error:",
-//           response.status,
-//           await response.text()
-//         );
-//         return null;
-//       }
-
-//       const result = await response.json();
-
-//       return result
-
-//     } catch (err) {
-//       console.log("erro", err);
-//       return null;
-//     }
-//   },
-// };
-
 import { BASE_URL } from "../../../../constants";
 
 export const productResolver = {
   getProductById: async (_: any, { productId }: { productId: string }) => {
-    // Utilizamos o endpoint de search para obter o objeto completo do produto
     const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}`;
 
     try {
       const response = await fetch(url, {
         headers: {
-          "X-VTEX-API-AppKey": "vtexappkey-ninjasomfaststore-CUGTSB",
-          "X-VTEX-API-AppToken": "ROCJMDGMSIXGJQEAAKWJUKEMPCUYTKDYFGGPVOQPUYMUDXSESUVVRFWGCKODUPUBYROXRUDCVIKSBSAULVBWTEDUSEVTTCFRBNEMVBQNNXCZKDEISQSUSZCIXBYIJJWQ",
+          "X-VTEX-API-AppKey": process.env.VTEX_APP_KEY ?? "",
+          "X-VTEX-API-AppToken": process.env.VTEX_APP_TOKEN ?? "",
           "Content-Type": "application/json",
         },
       });
 
       if (!response.ok) {
-        console.error("VTEX API error:", response.status);
+        console.error("VTEX API error:", response.status, await response.text());
         return null;
       }
 
@@ -63,29 +26,31 @@ export const productResolver = {
       const sku = product.items?.[0];
       const offer = sku?.sellers?.[0]?.commertialOffer;
 
-      // Montamos o retorno para bater com seu TypeDefs e queries
-      // Mantendo o mapeamento das especificações para não quebrar sua "Garantia"
-      return [{
-        Id: product.productId,
-        Name: product.productName,
-        // No Search, as especificações ficam em um formato que precisamos mapear 
-        // para manter compatibilidade com sua lógica de .find() e .Value[0]
-        Value: Object.keys(product.allSpecifications || {}).map(key => ({
-          Name: key,
-          Value: product[key] // O Search coloca os valores das specs na raiz do objeto
-        })),
-        listPrice: offer?.ListPrice,
-        price: offer?.Price,
-        sellingPrice: offer?.Price, // Aqui chegará o valor de R$ 4.299,00
-        installments: offer?.Installments?.map((ins: any) => ({
-          value: ins.Value,
-          numberOfInstallments: ins.NumberOfInstallments,
-          interestRate: ins.InterestRate,
-        })),
-      }];
-
+      return [
+        {
+          Id: product.productId,
+          Name: product.productName,
+          // allSpecifications é um array de nomes (ex: ["Garantia", "Voltagem"]);
+          // cada valor fica na raiz do objeto produto indexado pelo nome da spec.
+          Value: (product.allSpecifications ?? []).map((specName: string) => ({
+            Name: specName,
+            Value: product[specName],
+          })),
+          listPrice: offer?.ListPrice,
+          price: offer?.Price,
+          // sellingPrice: mapeia Price da API de Search como preço nominal de
+          // venda. Distinção real entre price/sellingPrice só existe no fragmento
+          // ClientManyProducts (StoreOffer), não neste endpoint de catálogo.
+          sellingPrice: offer?.Price,
+          installments: offer?.Installments?.map((ins: any) => ({
+            value: ins.Value,
+            numberOfInstallments: ins.NumberOfInstallments,
+            interestRate: ins.InterestRate,
+          })),
+        },
+      ];
     } catch (err) {
-      console.log("Erro no Resolver:", err);
+      console.error("Erro no Resolver:", err);
       return null;
     }
   },
