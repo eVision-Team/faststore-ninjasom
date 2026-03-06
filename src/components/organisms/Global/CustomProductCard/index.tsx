@@ -7,7 +7,6 @@ import formatPrice from "../../../../utils/formatPrice";
 import { useLazyQuery_unstable as useQuery } from "@faststore/core/experimental";
 import { GET_COLLECTION_PRODUCTS } from "./graphql/queries";
 import badgeIcon from "./icon/badge-icon.svg";
-import { set } from "cypress/types/lodash";
 
 type Installments = {
   count: number;
@@ -26,61 +25,59 @@ type CollectionProduct = {
 };
 
 const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
-  if (!product) return null;
-
-  const [getCollectionById, { data }] = useQuery(GET_COLLECTION_PRODUCTS, {});
+  const [getCollectionById] = useQuery(GET_COLLECTION_PRODUCTS, {});
   const [bestSellerCollection, setBestSellerCollection] = useState([] as any);
   const [exclusivePriceCollection, setExclusivePriceCollection] = useState(
     [] as any,
   );
 
   const fetchCollectionById = async () => {
-    setBestSellerCollection(
-      await getCollectionById({
-        collectionId: 159,
-      }),
-    );
-    setExclusivePriceCollection(
-      await getCollectionById({
-        collectionId: 160,
-      }),
-    );
+    const [bestSeller, exclusivePrice] = await Promise.all([
+      getCollectionById({ collectionId: 159 }),
+      getCollectionById({ collectionId: 160 }),
+    ]);
+    setBestSellerCollection(bestSeller);
+    setExclusivePriceCollection(exclusivePrice);
   };
 
   const isBestSeller = useMemo(() => {
     if (!bestSellerCollection?.getCollectionById?.Data) return false;
 
     return bestSellerCollection?.getCollectionById?.Data?.some(
-      (item: CollectionProduct) => item.SkuId == product.sku,
+      (item: CollectionProduct) => item.SkuId == product?.sku,
     );
-  }, [data, product.sku]);
+  }, [bestSellerCollection, product?.sku]);
 
   const isExclusivePrice = useMemo(() => {
     if (!exclusivePriceCollection?.getCollectionById?.Data) return false;
 
     return exclusivePriceCollection?.getCollectionById?.Data?.some(
       (item: CollectionProduct) =>
-        item.SkuId == product.sku ||
-        item.ProductId == product.id ||
-        item.ProductName == product.name,
+        item.SkuId == product?.sku ||
+        item.ProductId == product?.id ||
+        item.ProductName == product?.name,
     );
-  }, [data, product.sku]);
+  }, [exclusivePriceCollection, product?.sku, product?.id, product?.name]);
 
   useEffect(() => {
     fetchCollectionById();
   }, []);
 
+  if (!product) return null;
+
   const offer = product.offers?.offers?.[0];
   const listPrice = offer?.listPrice ?? 0;
   const price = offer?.price ?? 0;
+  // sellingPrice = preço nominal de venda, antes de descontos de forma de
+  // pagamento (ex: Pix). Disponível via extensão do fragmento ClientManyProducts
+  // em src/fragments/ClientManyProducts.ts.
+  const sellingPrice = (offer as any)?.sellingPrice ?? 0;
 
-  // calcula desconto %
   const discount =
     listPrice && listPrice > price
       ? Math.round(((listPrice - price) / listPrice) * 100)
       : 0;
 
-  // parcelas sempre pelo valor original (listPrice)
   const getInstallments = (value: number): Installments => {
     const maxInstallments = 10;
     return {
@@ -89,18 +86,18 @@ const CustomProductCard = ({ product, showDiscountBadge = true }: Props) => {
     };
   };
 
-  const installments = getInstallments(listPrice || price);
+  // Usa sellingPrice (preço nominal, ex: R$ 329,00) para parcelas.
+  // Evita usar price (spot price com Pix, ex: R$ 302,68) como base.
+  const installments = getInstallments(sellingPrice || listPrice || price);
+
   const imageUrl = product.image?.[0]?.url;
   const productName = product.name;
-  const productLink = `/${product.slug}/p`;
   const sku = product.sku;
-  const productStock = product?.offers?.offers[0]?.quantity;
+  const productStock = product?.offers?.offers?.[0]?.quantity;
 
   const cleanSlug = product.slug.endsWith(`-${sku}`)
     ? product.slug.slice(0, product.slug.length - `-${sku}`.length)
     : product.slug;
-
-  console.log({ product });
 
   return (
     <Link href={`/${cleanSlug}/p`} className={styles.card}>
