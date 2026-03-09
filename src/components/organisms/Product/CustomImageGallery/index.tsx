@@ -98,6 +98,9 @@ const CustomImageGallery = (props: any) => {
     setIsZooming(false);
   };
 
+  // =============================
+  // BLOQUEAR SCROLL NO MOBILE DURANTE O ZOOM
+  // =============================
   useEffect(() => {
     if (isZooming && isMobile) {
       document.body.style.overflow = "hidden";
