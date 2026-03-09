@@ -15,7 +15,8 @@ const CustomImageGallery = (props: any) => {
   const setSelectedImageIdx = props.setSelectedImageIdx;
 
   // Detectar mobile
-  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 1023 : false;
+  const isMobile =
+    typeof window !== "undefined" ? window.innerWidth <= 1023 : false;
 
   // =============================
   // BUSCAR VÍDEOS
@@ -97,9 +98,6 @@ const CustomImageGallery = (props: any) => {
     setIsZooming(false);
   };
 
-  // =============================
-  // BLOQUEAR SCROLL NO MOBILE DURANTE O ZOOM
-  // =============================
   useEffect(() => {
     if (isZooming && isMobile) {
       document.body.style.overflow = "hidden";
@@ -113,13 +111,13 @@ const CustomImageGallery = (props: any) => {
   // =============================
   const goPrev = () => {
     setSelectedImageIdx((prev: number) =>
-      prev === 0 ? galleryItems.length - 1 : prev - 1
+      prev === 0 ? galleryItems.length - 1 : prev - 1,
     );
   };
 
   const goNext = () => {
     setSelectedImageIdx((prev: number) =>
-      prev === galleryItems.length - 1 ? 0 : prev + 1
+      prev === galleryItems.length - 1 ? 0 : prev + 1,
     );
   };
 
@@ -205,7 +203,11 @@ const CustomImageGallery = (props: any) => {
             {item.isVideo ? (
               <div className={styles.videoThumb}>▶</div>
             ) : (
-              <img src={item.url} alt={item.alt ?? ""} className={styles.thumb} />
+              <img
+                src={item.url}
+                alt={item.alt ?? ""}
+                className={styles.thumb}
+              />
             )}
           </button>
         ))}
@@ -217,18 +219,26 @@ const CustomImageGallery = (props: any) => {
         className={`${styles.viewer} ${
           selectedItem?.isVideo ? styles.noZoom : ""
         }`}
-        onMouseEnter={() => !selectedItem?.isVideo && !isMobile && setIsZooming(true)}
-        onMouseLeave={() => !selectedItem?.isVideo && !isMobile && setIsZooming(false)}
+        onMouseEnter={() =>
+          !selectedItem?.isVideo && !isMobile && setIsZooming(true)
+        }
+        onMouseLeave={() =>
+          !selectedItem?.isVideo && !isMobile && setIsZooming(false)
+        }
         onMouseMove={handleMouseMove}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <button className={styles.arrowLeft} onClick={goPrev}>❮</button>
+        <button className={styles.arrowLeft} onClick={goPrev}>
+          ❮
+        </button>
 
         {renderViewer()}
 
-        <button className={styles.arrowRight} onClick={goNext}>❯</button>
+        <button className={styles.arrowRight} onClick={goNext}>
+          ❯
+        </button>
       </div>
     </div>
   );
