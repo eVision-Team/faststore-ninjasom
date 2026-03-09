@@ -1,0 +1,85 @@
+---
+description: Padrões de estilização com SCSS Modules e tokens FastStore
+globs: **/*.tsx,**/*.scss
+alwaysApply: false
+---
+
+# Padrões de Estilização
+
+## Regra principal: SCSS Modules por componente
+
+Cada componente tem seu próprio arquivo `styles.module.scss` em `src/sass/`, com pasta em **camelCase** espelhando o nome do componente:
+
+```
+src/sass/
+└── customProductDetailsDescription/
+    └── styles.module.scss    ← sempre este nome
+```
+
+O import no componente segue o caminho relativo até `src/sass/`:
+
+```tsx
+// ✅ CORRETO
+import styles from "../../../../sass/customProductDetailsDescription/styles.module.scss";
+
+// Uso
+<div className={styles.wrapper}>
+  <span className={styles.imageWrapper} />
+</div>
+```
+
+## Nomenclatura de classes CSS
+
+Classes dentro do SCSS module usam **camelCase**:
+
+```scss
+// ✅ CORRETO
+.card { ... }
+.imageWrapper { ... }
+.priceContainer { ... }
+
+// ❌ ERRADO
+.image-wrapper { ... }
+.PriceContainer { ... }
+```
+
+## Tokens FastStore: sempre via custom-theme.scss
+
+Valores de cor, tipografia e espaçamento globais devem ser sobrescritos como CSS custom properties em `src/themes/custom-theme.scss`, **nunca** harcodados no SCSS do componente:
+
+```scss
+// ✅ CORRETO — em custom-theme.scss
+.theme {
+  --fs-color-main-2: #044FBF;
+  --fs-grid-max-width: 1216px;
+}
+
+// ✅ CORRETO — consumir o token no módulo do componente
+.title {
+  color: var(--fs-color-main-2);
+}
+
+// ❌ ERRADO — valor hardcoded no componente
+.title {
+  color: #044FBF;
+}
+```
+
+## Estilos inline — apenas exceção pontual
+
+Estilos inline (`style={{ }}`) só são aceitáveis para valores **completamente dinâmicos** (ex: width calculado em JS). Nunca usar para substituir classes estáticas:
+
+```tsx
+// ✅ ACEITÁVEL — valor dinâmico
+<div style={{ width: `${progress}%` }} />
+
+// ❌ ERRADO — substituir classe estática
+<div style={{ display: "flex", alignItems: "center", gap: "8px" }} />
+```
+
+## Proibido
+
+- Tailwind CSS
+- CSS-in-JS (styled-components, emotion)
+- Arquivos `.css` avulsos
+- Criar um arquivo SCSS fora de `src/sass/` ou de `src/themes/`

@@ -1,0 +1,125 @@
+---
+description: Padrões de queries GraphQL, resolvers e data fetching do projeto
+globs: **/*.ts,**/*.tsx,**/*.graphql
+alwaysApply: false
+---
+
+# GraphQL e Data Fetching
+
+## Padrão de fetch no cliente: `useLazyQuery_unstable`
+
+Para buscar dados customizados em componentes (PDP, PLP), usar o hook experimental do FastStore, sempre aliasado como `useQuery`:
+
+```ts
+// ✅ CORRETO
+//@ts-ignore
+import { useLazyQuery_unstable as useQuery } from "@faststore/core/experimental";
+import { GET_PRODUCT_DESCRIPTION } from "./graphql/queries";
+
+const [fetchProduct, { data, isValidating }] = useQuery(GET_PRODUCT_DESCRIPTION, {});
+
+useEffect(() => {
+  if (!context?.data?.product) return;
+  fetchProduct({ productId: context.data.product.isVariantOf.productGroupID });
+}, [context]);
+```
+
+## Localização das queries
+
+Cada componente que precisa de dados customizados cria uma pasta `graphql/` com `queries.ts` (ou `mutations.ts`):
+
+```
+CustomProductDetailsDescription/
+├── index.tsx
+└── graphql/
+    └── queries.ts   ← query isolada aqui
+```
+
+## Nomeação de constantes GraphQL: SCREAMING_SNAKE_CASE
+
+```ts
+// ✅ CORRETO
+export const GET_PRODUCT_DESCRIPTION = gql`...`;
+export const STOCK_NOTIFICATION_MUTATION = gql`...`;
+
+// ❌ ERRADO
+export const getProductDescription = gql`...`;
+export const productDescriptionQuery = gql`...`;
+```
+
+## Sintaxe de queries: tagged template literal
+
+```ts
+// ✅ CORRETO — tagged template (sem @ts-ignore)
+export const GET_PRODUCT_DESCRIPTION = gql`
+  query getProductById($productId: String!) {
+    getProductById(productId: $productId) {
+      Id
+      Name
+      Value { Name Value }
+    }
+  }
+`;
+
+// ❌ EVITAR — gql() como função com @ts-ignore (legado no projeto)
+//@ts-ignore
+export const GET_PRODUCT_DESCRIPTION = gql(`...`);
+```
+
+## Resolvers server-side: fetch direto à API VTEX
+
+```ts
+// ✅ CORRETO — resolver em src/graphql/vtex/resolvers/product/index.ts
+export const productResolver = {
+  getProductById: async (_: any, { productId }: { productId: string }) => {
+    const url = `${BASE_URL}/api/catalog_system/pub/products/search?fq=productId:${productId}`;
+    const response = await fetch(url, {
+      headers: {
+        "X-VTEX-API-AppKey": process.env.VTEX_APP_KEY!,
+        "X-VTEX-API-AppToken": process.env.VTEX_APP_TOKEN!,
+      },
+    });
+    return response.json();
+  },
+};
+```
+
+> **Segurança obrigatória:** credenciais VTEX **sempre** via variáveis de ambiente (`process.env`), **nunca** hardcoded.
+
+## TypeDefs: arquivos `.graphql` em `src/graphql/vtex/typeDefs/`
+
+```graphql
+# src/graphql/vtex/typeDefs/product.graphql
+type Query {
+  getProductById(productId: String): [Product]
+}
+
+type Specification {
+  Name: String
+  Value: [String]
+}
+```
+
+## Aggregar resolvers em `src/graphql/vtex/resolvers/index.ts`
+
+```ts
+// ✅ CORRETO — spread de cada resolver no objeto Query/Mutation
+const resolvers = {
+  Query: {
+    ...productResolver,
+    ...buyTogetherResolver,
+  },
+  Mutation: {
+    ...stockNotificationResolver,
+  },
+};
+export default resolvers;
+```
+
+## Fetch direto no browser — apenas quando não há resolver disponível
+
+```ts
+// Aceitável apenas para APIs externas sem schema GraphQL (ex: reviews)
+const res = await fetch(`https://ninjasomfaststore.myvtex.com/reviews-and-ratings/api/rating/${id}`);
+const data = await res.json();
+```

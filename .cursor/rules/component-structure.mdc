@@ -1,0 +1,66 @@
+---
+description: Estrutura, nomenclatura e padrão de exportação de componentes React
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# Estrutura de Componentes React
+
+## Anatomia obrigatória de um componente
+
+```
+organisms/
+└── Product/
+    └── CustomProductDetailsDescription/   ← PascalCase
+        ├── index.tsx                       ← componente principal
+        ├── graphql/
+        │   └── queries.ts                  ← queries isoladas
+        └── icons/                          ← SVGs como componentes .tsx
+```
+
+## Arquivo `index.tsx` — estrutura padrão
+
+```tsx
+import styles from "../../../../sass/customProductDetailsDescription/styles.module.scss";
+import { useLazyQuery_unstable as useQuery } from "@faststore/core/experimental";
+import { GET_PRODUCT_DESCRIPTION } from "./graphql/queries";
+
+type Props = {
+  context: any; // tipar adequadamente
+};
+
+const CustomProductDetailsDescription = ({ context }: Props) => {
+  // lógica aqui
+
+  return (
+    <div className={styles.wrapper}>
+      {/* JSX */}
+    </div>
+  );
+};
+
+export default CustomProductDetailsDescription;
+```
+
+## Regras de exportação
+
+- Componentes: sempre `export default ComponentName` — **nunca** named export
+- Overrides: sempre `export { override }` — **nunca** default export
+- Dados/constantes locais (`items.ts`, `menus.ts`): named exports (`export const`, `export default`)
+
+## Nomenclatura de arquivos
+
+| Tipo | Convenção | Exemplo |
+|---|---|---|
+| Componente principal | `index.tsx` dentro de pasta PascalCase | `CustomHero/index.tsx` |
+| Componente standalone | `PascalCase.tsx` | `Newsletter.tsx`, `Background.tsx` |
+| Ícone SVG como componente | `PascalCase.tsx` | `PlusIcon.tsx`, `LockIcon.tsx` |
+| Dados/config estáticos | `camelCase.ts` | `items.ts`, `menus.ts` |
+| Queries GraphQL | `queries.ts` ou `mutations.ts` na pasta `graphql/` | `graphql/queries.ts` |
+
+## Proibido
+
+- `forwardRef` — não há uso no projeto, evitar introduzir sem necessidade
+- `React.memo` — apenas em componentes de UI primitivos (`src/components/ui/`)
+- Props inline anônimas (ex: `({ id }: { id: string })`) — sempre declarar `type Props`
+- Criar componente fora da hierarquia `molecules/` ou `organisms/` (exceto `ui/` e `overrides/`)

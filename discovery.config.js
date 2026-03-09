@@ -1,9 +1,9 @@
 module.exports = {
   seo: {
-    title: "Ninja Som - Encontre aqui Equipamentos de Som Profissional",
+    title: "Ninja Som",
     description:
       "Encontre aqui Equipamentos de Som Profissional com as melhores ofertas. Som Profissional com preço baixo e entrega rápida. Instrumentos Ninja Som.",
-    titleTemplate: "%s | Ninja Som",
+    titleTemplate: "Ninja Som",
     author: "eVision",
   },
   // Theming
@@ -51,8 +51,7 @@ module.exports = {
   //loginUrl: "https://secure.vtexfaststore.com/api/io/login",
   //accountUrl: "https://secure.vtexfaststore.com/api/io/account",
 
-
- storeUrl: "https://www.ninjasom.com.br",
+  storeUrl: "https://www.ninjasom.com.br",
   secureSubdomain: "https://secure.vtexfaststore.com/",
   checkoutUrl: "https://www.ninjasom.com.br/checkout",
   loginUrl: "https://www.ninjasom.com.br/api/io/login",

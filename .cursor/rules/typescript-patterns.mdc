@@ -1,0 +1,80 @@
+---
+description: Padrões TypeScript para componentes e utilitários do projeto
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+
+# Padrões TypeScript
+
+## Tipagem de Props: sempre `type`, nunca `interface`
+
+```tsx
+// ✅ CORRETO — padrão dominante do projeto
+type Props = {
+  title: string;
+  showBadge?: boolean;
+};
+
+const MyComponent = ({ title, showBadge }: Props) => { ... };
+
+// ❌ ERRADO — não usar interface para props de componentes
+interface MyComponentProps {
+  title: string;
+}
+```
+
+## Tipos Locais: também `type`
+
+Modelos de dados locais (ex: itens de menu, shapes de resposta de API) usam `type`, não `interface`:
+
+```ts
+// ✅ CORRETO
+type MenuItem = {
+  title: string;
+  link: string;
+};
+
+type Section = {
+  title: string;
+  items: MenuItem[];
+};
+
+// ❌ ERRADO
+interface MenuItem { ... }
+```
+
+## Nomeação de Tipos
+
+- Props do componente: sempre `Props` (genérico local, sem prefixar com o nome do componente)
+- Tipos auxiliares: PascalCase descritivo (`Installments`, `Section`, `CollectionProduct`)
+- Constantes GraphQL: SCREAMING_SNAKE_CASE (`GET_PRODUCT_DESCRIPTION`, `STOCK_NOTIFICATION`)
+
+## Evitar `any` — tipar explicitamente
+
+```ts
+// ❌ ERRADO
+type Props = {
+  product: any;
+};
+
+// ✅ CORRETO — criar o tipo adequado ou usar unknown com narrowing
+type Product = {
+  id: string;
+  name: string;
+  // ...
+};
+
+type Props = {
+  product: Product;
+};
+```
+
+## `React.FC<>` — não usar
+
+```tsx
+// ❌ ERRADO
+const MyComponent: React.FC<Props> = ({ title }) => { ... };
+
+// ✅ CORRETO
+const MyComponent = ({ title }: Props) => { ... };
+```

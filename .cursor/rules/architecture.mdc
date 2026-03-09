@@ -1,0 +1,52 @@
+---
+description: Regras gerais de arquitetura do projeto FastStore Ninjasom
+alwaysApply: true
+---
+
+# Arquitetura do Projeto
+
+## Estrutura de Pastas
+
+O projeto segue **Atomic Design** com ênfase em `organisms`. Toda entrega deve respeitar:
+
+```
+src/
+├── components/
+│   ├── hooks/          ← hooks customizados
+│   ├── molecules/      ← componentes compostos simples
+│   ├── organisms/      ← seções completas, agrupadas por domínio:
+│   │   ├── Category/
+│   │   ├── Global/
+│   │   ├── Home/
+│   │   ├── Institutional/
+│   │   └── Product/
+│   ├── overrides/      ← sobrescritas de componentes nativos FastStore
+│   └── ui/             ← primitivos de UI (Image, etc.)
+├── constants/          ← apenas BASE_URL e constantes globais
+├── graphql/vtex/
+│   ├── resolvers/      ← resolvers agrupados por domínio (camelCase)
+│   └── typeDefs/       ← schemas .graphql
+├── sass/               ← SCSS modules, espelhando nomes de componentes (camelCase)
+├── themes/             ← custom-theme.scss (tokens globais FastStore)
+└── utils/              ← funções utilitárias puras
+```
+
+## Convenção de Nomenclatura de Pastas
+
+| Camada | Convenção | Exemplo |
+|---|---|---|
+| Pastas de componentes | **PascalCase** | `CustomProductCard/`, `BuyTogether/` |
+| Sub-componentes internos | **PascalCase** | `BuyTogetherProductCard/` |
+| Pastas SCSS | **camelCase** | `customProductCard/`, `buyTogether/` |
+| Resolvers GraphQL | **camelCase** | `buyTogether/`, `stockNotification/` |
+| Utilitários/configs | **camelCase** | `utils/`, `constants/`, `fragments/` |
+
+## Barrel Exports
+
+- `src/components/index.tsx` é o **único barrel** de registro CMS — adicionar toda nova seção aqui.
+- Sub-pastas **não** têm barrel próprio; cada componente expõe apenas seu `index.tsx`.
+- Overrides exportam um objeto nomeado `{ override }`, nunca `export default`.
+
+## Dados Co-localizados
+
+Dados estáticos (menus, listas, ícones) vivem em arquivos `camelCase.ts` **ao lado** do componente que os consome (ex: `items.ts`, `menus.ts`, `departments.ts`). Não criar arquivos de dados em `src/constants/`.
