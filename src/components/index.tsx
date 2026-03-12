@@ -7,6 +7,7 @@ import HomeBrandsCarousel from "./organisms/Home/HomeBrandsCarousel";
 import HomeTabLayout from "./organisms/Home/HomeTabLayout";
 import HomeMusicTaste from "./organisms/Home/HomeMusicTaste";
 import CustomFooter from "./organisms/Global/CustomFooter";
+import WhatsAppFluid from "./organisms/Global/WhatsAppFluid";
 import AboutUs from "./organisms/Institutional/AboutUs";
 import OurStores from "./organisms/Institutional/OurStores";
 import EachStore from "./organisms/Institutional/EachStore";
@@ -30,6 +31,7 @@ export default {
   HomeTabLayout,
   HomeMusicTaste,
   CustomFooter,
+  WhatsAppFluid,
   AboutUs,
   OurStores,
   EachStore,

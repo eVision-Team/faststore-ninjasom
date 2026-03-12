@@ -642,5 +642,19 @@
         }
       }
     }
+  },
+  {
+    "name": "WhatsAppFluid",
+    "schema": {
+      "title": "Botão flutuante WhatsApp",
+      "type": "object",
+      "properties": {
+        "whatsappUrl": {
+          "title": "URL do WhatsApp",
+          "type": "string",
+          "default": "https://whts.co/ninjasom"
+        }
+      }
+    }
   }
 ]

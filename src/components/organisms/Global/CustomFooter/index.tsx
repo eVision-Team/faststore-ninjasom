@@ -11,6 +11,8 @@ import Newsletter from "./Newsletter";
 import eVisionLogo from "./icons/evision.png";
 import vtexLogo from "./icons/vtex.png";
 
+import WhatsAppFluid from "../WhatsAppFluid";
+
 type Item = {
   title: string;
   link: string;
@@ -26,7 +28,6 @@ type Props = {
 };
 
 const CustomFooter = ({ menuSections }: Props) => {
-
   return (
     <footer className={styles.customFooter}>
       <div className={styles.customFooterWrapper}>
@@ -57,7 +58,7 @@ const CustomFooter = ({ menuSections }: Props) => {
           {/* <Image src={Top100} alt="Top 100 Dealer Finalist" /> */}
         </div>
         <div className={styles.secondCol}>
-          {menuSections.map((section, index) => ( 
+          {menuSections.map((section, index) => (
             <div key={index}>
               <h4>{section.title}</h4>
               <ul>
@@ -101,6 +102,7 @@ const CustomFooter = ({ menuSections }: Props) => {
           <Image src={vtexLogo} alt="Vtex" />
         </Link>
       </div>
+      <WhatsAppFluid whatsappUrl="https://whts.co/ninjasom" />
     </footer>
   );
 };
