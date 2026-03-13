@@ -547,6 +547,17 @@
     align-items: center;
   }
 
+
+.section-product-details {
+  a[data-fs-link="true"] {
+    span {
+      color: var(--fs-link-text-color); // cor desejada
+      font-weight: bold;
+    }
+  }
+}
+
+
   .section-product-details [data-fs-buy-button] [data-fs-button-wrapper] {
     background-color: #00B230;
     border-color: #00B230;
@@ -555,6 +566,8 @@
   .section-product-details [data-fs-product-details] [data-fs-product-details-settings] {
     gap: 6px;
   }
+
+  .section-product-details
 
   section[data-fs-product-details-settings="true"][data-fs-product-details-section="true"] {
     border: none;
