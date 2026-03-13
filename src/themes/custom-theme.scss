@@ -699,10 +699,26 @@
     }
   }
 
+
+
+.section-empty-state {
+  @media (max-width: 1023px) {
+    [data-fs-empty-state] {
+      p {
+        overflow-wrap: break-word;
+        word-break: break-word !important;
+      }
+    }
+  }
+}
+
+
   .product-description {
     @media (max-width: 1023px) {
       width: 100%;
     }
+
+
 
     div[data-testid=fs-accordion-panel]>div {
       gap: 0 !important;
