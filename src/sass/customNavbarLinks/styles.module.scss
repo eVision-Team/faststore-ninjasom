@@ -113,7 +113,22 @@
 // MOBILE
 
 @media (max-width: 1023px) {
+
+
+
+    
     .mobileMenu {
+
+
+          .mobileSubmenu {
+
+            a[href*="soundcast"],
+            a[href*="teclado-arranjador-76-teclas-usb-midi-genos-2---yamaha"] {
+                display: none !important;
+            }
+
+        }
+
 
 
         div[data-testid="fs-accordion-item"] {
