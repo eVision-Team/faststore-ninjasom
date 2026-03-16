@@ -33,13 +33,13 @@ src/
 
 ## Convenção de Nomenclatura de Pastas
 
-| Camada | Convenção | Exemplo |
-|---|---|---|
-| Pastas de componentes | **PascalCase** | `CustomProductCard/`, `BuyTogether/` |
-| Sub-componentes internos | **PascalCase** | `BuyTogetherProductCard/` |
-| Pastas SCSS | **camelCase** | `customProductCard/`, `buyTogether/` |
-| Resolvers GraphQL | **camelCase** | `buyTogether/`, `stockNotification/` |
-| Utilitários/configs | **camelCase** | `utils/`, `constants/`, `fragments/` |
+| Camada                   | Convenção      | Exemplo                              |
+| ------------------------ | -------------- | ------------------------------------ |
+| Pastas de componentes    | **PascalCase** | `CustomProductCard/`, `BuyTogether/` |
+| Sub-componentes internos | **PascalCase** | `BuyTogetherProductCard/`            |
+| Pastas SCSS              | **camelCase**  | `customProductCard/`, `buyTogether/` |
+| Resolvers GraphQL        | **camelCase**  | `buyTogether/`, `stockNotification/` |
+| Utilitários/configs      | **camelCase**  | `utils/`, `constants/`, `fragments/` |
 
 ## Barrel Exports
 
@@ -50,3 +50,9 @@ src/
 ## Dados Co-localizados
 
 Dados estáticos (menus, listas, ícones) vivem em arquivos `camelCase.ts` **ao lado** do componente que os consome (ex: `items.ts`, `menus.ts`, `departments.ts`). Não criar arquivos de dados em `src/constants/`.
+
+## Proibições de Arquitetura
+
+Não criar src/Layout.tsx: O layout global é controlado pelo @faststore/core. Alterações globais devem ser feitas via componentes em organisms/Global injetados no Footer/Header ou via seções de CMS.
+
+Evitar arquivos fora da hierarquia Atomic Design: Toda UI deve morar em molecules, organisms ou ui.
