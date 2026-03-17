@@ -14,7 +14,7 @@ interface CustomHeroProps {
   imageMobile?: string;
   link?: string;
   banners?: BannerItem[];
-  interval?: number;
+  autoplayInterval?: number;
 }
 
 const CustomHero = ({
@@ -22,9 +22,11 @@ const CustomHero = ({
   imageMobile,
   link,
   banners,
-  interval = 5000,
+  autoplayInterval = 5000,
 }: CustomHeroProps) => {
   const isMobile = useIsMobile();
+
+  console.log('Valor recebido do CMS:', autoplayInterval);
   const containerRef = useRef<HTMLElement>(null);
 
   const items = useMemo<BannerItem[]>(() => {
@@ -38,17 +40,19 @@ const CustomHero = ({
   }, [banners, image, imageMobile, link]);
 
   useEffect(() => {
-    if (items.length <= 1) return;
+    const safeInterval = autoplayInterval && autoplayInterval > 0 ? autoplayInterval : 0;
+
+    if (items.length <= 1 || safeInterval === 0) return;
 
     const timer = setInterval(() => {
       const nextBtn = containerRef.current?.querySelector<HTMLButtonElement>(
         '[data-fs-carousel-control="right"]'
       );
       nextBtn?.click();
-    }, interval);
+    }, safeInterval);
 
     return () => clearInterval(timer);
-  }, [items.length, interval]);
+  }, [items.length, autoplayInterval]);
 
   if (items.length === 0) {
     return null;

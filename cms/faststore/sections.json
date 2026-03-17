@@ -4,6 +4,12 @@
       "title": "Banner principal",
       "type": "object",
       "properties": {
+        "autoplayInterval": {
+          "title": "Velocidade do Autoplay (ms)",
+          "description": "Tempo em milissegundos. Ex: 5000 para 5 segundos. Use 0 para desativar.",
+          "type": "number",
+          "default": 5000
+        },
         "banners": {
           "title": "Banners (slider)",
           "type": "array",
