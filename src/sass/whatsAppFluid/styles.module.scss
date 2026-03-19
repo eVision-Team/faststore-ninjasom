@@ -22,6 +22,11 @@
     transform: scale(1.08);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
   }
+
+  @media (min-width: 1024px) {
+    left: auto;
+    right: 2rem; // Posicionamento Desktop
+  }
 }
 
 .icon {
