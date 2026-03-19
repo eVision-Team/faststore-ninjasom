@@ -25,6 +25,8 @@ type Props = {
   whatsappPhone: string;
   commercialPhone: string;
   whatsappLink: string;
+  whatsappInstruments?: string;
+  whatsappAudio?: string;
   email: string;
   singleAddress: string;
   name: string;
@@ -46,6 +48,8 @@ const EachStore = (props: Props) => {
     whatsappPhone,
     commercialPhone,
     whatsappLink,
+    whatsappInstruments,
+    whatsappAudio,
     email,
     singleAddress,
     name,
@@ -108,7 +112,11 @@ const EachStore = (props: Props) => {
 
       <Brands />
 
-      <HighlightProducts />
+      <HighlightProducts
+          whatsappLink={whatsappLink}
+          whatsappInstruments={whatsappInstruments}
+          whatsappAudio={whatsappAudio}
+        />
 
       {/* Info */}
       <div className={styles.storeInfo}>

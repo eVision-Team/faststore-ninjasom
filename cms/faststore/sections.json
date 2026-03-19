@@ -448,6 +448,14 @@
           "title": "E-mail",
           "type": "string"
         },
+        "whatsappInstruments": {
+          "title": "Link do WhatsApp - Instrumentos Musicais",
+          "type": "string"
+        },
+        "whatsappAudio": {
+          "title": "Link do WhatsApp - Áudio Profissional",
+          "type": "string"
+        },
         "storeImages": {
           "title": "Imagens da Loja",
           "type": "array",

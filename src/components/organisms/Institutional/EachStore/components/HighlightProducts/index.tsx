@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "../../../../../../sass/institutional/eachStore/styles.module.scss";
 
-const HighlightProducts = () => {
+type Props = {
+  whatsappLink?: string;
+  whatsappInstruments?: string;
+  whatsappAudio?: string;
+};
+
+const HighlightProducts = ({ whatsappLink, whatsappInstruments, whatsappAudio }: Props) => {
   return (
     <section className={styles.highlightProducts}>
       <h2>Produtos em Destaque</h2>
@@ -16,7 +22,7 @@ const HighlightProducts = () => {
               alt="Instrumentos Musicais"
             />
           </div>
-          <a href="https://whts.co/ninjasom-filial" target="_blank">
+          <a href={whatsappInstruments || whatsappLink || "#"} target="_blank">
             Fale com um especialista em Instrumentos!
           </a>
         </div>
@@ -28,7 +34,7 @@ const HighlightProducts = () => {
               alt="Áudio Profissional"
             />
           </div>
-          <a href="https://whts.co/ninjasom-filial" target="_blank">
+          <a href={whatsappAudio || whatsappLink || "#"} target="_blank">
             Fale com um especialista em Audio!
           </a>
         </div>
