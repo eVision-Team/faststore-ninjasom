@@ -6,8 +6,44 @@
     .customFooterWrapper {
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
         max-width: var(--fs-grid-max-width);
         margin: 0 auto;
+
+        .firstCol,
+        .thirdCol {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .secondCol {
+            min-width: 0;
+            max-width: 100%;
+
+            li a {
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+
+            .whatsappMenuRow {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                max-width: 100%;
+
+                img {
+                    flex-shrink: 0;
+                    width: 30px;
+                    height: 30px;
+                    object-fit: contain;
+                }
+
+                span {
+                    min-width: 0;
+                }
+            }
+        }
 
         .copyright {
             font-weight: 400;
