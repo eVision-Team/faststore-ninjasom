@@ -10,6 +10,7 @@ import VerifiedRA from "./icons/verified-ra.png";
 import Newsletter from "./Newsletter";
 import eVisionLogo from "./icons/evision.png";
 import vtexLogo from "./icons/vtex.png";
+import RDStationScript from "./RdStation";
 
 import WhatsAppFluid from "../WhatsAppFluid";
 
@@ -103,6 +104,7 @@ const CustomFooter = ({ menuSections }: Props) => {
         </Link>
       </div>
       <WhatsAppFluid whatsappUrl="https://whts.co/ninjasom" />
+      <RDStationScript />
     </footer>
   );
 };
