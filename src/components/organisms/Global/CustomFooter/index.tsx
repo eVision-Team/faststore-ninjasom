@@ -37,8 +37,8 @@ const CustomFooter = ({ menuSections }: Props) => {
             <Image src={Logo} width={299} height={45} alt="Ninja Som" />
           </Link>
           <p className={styles.copyright}>
-            NINJA SOM COMERCIO DE ELETRONICOS E MATERIAIS ELETRICOS LTDA - 2012
-            - 2022, todos os direitos reservados.
+            NINJA SOM COMERCIO DE ELETRONICOS E MATERIAIS ELETRICOS LTDA - 2003
+            - 2026, todos os direitos reservados.
           </p>
           <p className={styles.copyright}>
             Rua Santa Ifigênia, 556/560/562/564 - Santa Efigênia CEP: 01.207-000
